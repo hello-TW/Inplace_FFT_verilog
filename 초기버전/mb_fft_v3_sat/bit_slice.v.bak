@@ -1,0 +1,23 @@
+module bit_slice #(
+    parameter BW = 16 // output bit width
+)(
+    input [BW:0] data_in,
+    output [BW-1:0] data_out
+);
+    parameter [BW-1:0] MAX = -1;
+    parameter [BW-1:0] MIN = 0;
+    reg [BW-1:0] data_out_reg;
+
+    MAX[BW-1] = 0;
+    MIN[BW-1] = 1;
+
+    always @(*) begin
+        if(data_in > MAX)
+            data_out_reg = MAX;
+        else if(data_in < MIN)
+            data_out_reg = MIN;
+        else
+            data_out_reg = {data_in[BW], data_in[BW-2:0]}
+    end
+    assign data_out = data_out_reg;
+endmodule

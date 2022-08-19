@@ -1,0 +1,24 @@
+모니터링 회로 구현관점 (구체적)
+    sw/hw?
+
+clock gating 은 쉬운데 상용화 하는데 오래걸림?
+    삼성에서 최근 논문을 냈는데 sw말고 hw로 하는 방법을 냄
+    clock gating은 어려운 개념이 아닌데 이제 나온게 이상함
+
+front-end back-end 각각 clock gating 하는 방법
+front-end back-end 파워 측정법 (power commpiler)
+    static: 코드만 보고
+    dynamic: 실제 입력을 넣었을때
+
+    power compiler가 static인지 dynamic인지
+        아마 static: 코드만 입력으로 넣기 때문
+        worst case를뽑을 것이다.
+
+script상에 clock gating을 껏타키는 option
+
+primetime ,primetimepx
+primepower 차이
+
+    각각 fornt-end back-end 에서 차이
+
+교과서랑 tool 의 실제사용 이랑 비교

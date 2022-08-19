@@ -1,0 +1,2780 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version Q-2019.12-SP3 for linux64 - Apr 21, 2020 
+
+                    Copyright (c) 1988 - 2020 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+Initializing gui preferences from file  /home/ch/.synopsys_dv_prefs.tcl
+#Taigon's DC default script file
+# Setup.
+set verilogDir /home/ch/mb_fft/verilog
+/home/ch/mb_fft/verilog
+set topModule Inplace_FFT
+Inplace_FFT
+set printModule mb_fft
+mb_fft
+set search_path "$search_path $verilogDir"
+. /tools/synopsys/DC/syn/Q-2019.12-SP3/libraries/syn /tools/synopsys/DC/syn/Q-2019.12-SP3/dw/syn_ver /tools/synopsys/DC/syn/Q-2019.12-SP3/dw/sim_ver /home/ch/mb_fft/verilog
+# Read library.
+set tmpStr ./tsmc_28nm_ccs.db
+./tsmc_28nm_ccs.db
+set target_library $tmpStr
+./tsmc_28nm_ccs.db
+set link_library "* $target_library"
+* ./tsmc_28nm_ccs.db
+# Read design.
+#read_verilog $verilogDir/BF.v
+#read_verilog $verilogDir/controlblock.v
+#read_verilog $verilogDir/counter.v
+#read_verilog $verilogDir/MULT.v
+#read_verilog $verilogDir/simple_dualport_RAM.v
+#read_verilog $verilogDir/swap.v
+#read_verilog $verilogDir/Inplace_FFT.v
+define_design_lib WORK -path ./verilog
+1
+analyze -format verilog { ./verilog/BF.v ./verilog/controlblock.v ./verilog/counter.v ./verilog/MULT.v ./verilog/simple_dualport_RAM.v ./verilog/swap.v ./verilog/Inplace_FFT.v }
+Running PRESTO HDLC
+Compiling source file ./verilog/BF.v
+Compiling source file ./verilog/controlblock.v
+Compiling source file ./verilog/counter.v
+Compiling source file ./verilog/MULT.v
+Warning:  ./verilog/MULT.v:10: Parameter keyword used in local parameter declaration. (VER-329)
+Compiling source file ./verilog/simple_dualport_RAM.v
+Compiling source file ./verilog/swap.v
+Compiling source file ./verilog/Inplace_FFT.v
+Warning:  ./verilog/Inplace_FFT.v:8: Parameter keyword used in local parameter declaration. (VER-329)
+Presto compilation completed successfully.
+Loading db file '/home/ch/mb_fft/tsmc_28nm_ccs.db'
+Information: Using CCS timing libraries. (TIM-024)
+1
+elaborate Inplace_FFT
+Loading db file '/tools/synopsys/DC/syn/Q-2019.12-SP3/libraries/syn/gtech.db'
+Loading db file '/tools/synopsys/DC/syn/Q-2019.12-SP3/libraries/syn/standard.sldb'
+  Loading link library 'tcbn28hpcplusbwp30p140tt0p9v25c_ccs'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully. (Inplace_FFT)
+Elaborated 1 design.
+Current design is now 'Inplace_FFT'.
+Information: Building the design 'counter'. (HDL-193)
+
+Inferred memory devices in process
+	in routine counter line 7 in file
+		'./verilog/counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       cnt_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter)
+Information: Building the design 'simple_dualport_RAM' instantiated from design 'Inplace_FFT' with
+	the parameters "32". (HDL-193)
+
+Inferred memory devices in process
+	in routine simple_dualport_RAM_BW32 line 12 in file
+		'./verilog/simple_dualport_RAM.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       ram_reg       | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine simple_dualport_RAM_BW32 line 18 in file
+		'./verilog/simple_dualport_RAM.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    data_out_reg     | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+=================================================================
+|      block name/line        | Inputs | Outputs | # sel inputs |
+=================================================================
+| simple_dualport_RAM_BW32/20 |   32   |   32    |      5       |
+=================================================================
+Presto compilation completed successfully. (simple_dualport_RAM_BW32)
+Information: Building the design 'swap' instantiated from design 'Inplace_FFT' with
+	the parameters "32". (HDL-193)
+Presto compilation completed successfully. (swap_BW32)
+Information: Building the design 'BF' instantiated from design 'Inplace_FFT' with
+	the parameters "16". (HDL-193)
+Presto compilation completed successfully. (BF_BW16)
+Information: Building the design 'MULT' instantiated from design 'Inplace_FFT' with
+	the parameters "34". (HDL-193)
+
+Statistics for case statements in always block at line 88 in file
+	'./verilog/MULT.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            89            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine MULT_BW34 line 88 in file
+		'./verilog/MULT.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     temp_re_reg     | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+|     temp_im_reg     | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (MULT_BW34)
+Information: Building the design 'swap' instantiated from design 'Inplace_FFT' with
+	the parameters "34". (HDL-193)
+Presto compilation completed successfully. (swap_BW34)
+Information: Building the design 'controlblock'. (HDL-193)
+
+Statistics for case statements in always block at line 55 in file
+	'./verilog/controlblock.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            56            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine controlblock line 29 in file
+		'./verilog/controlblock.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine controlblock line 172 in file
+		'./verilog/controlblock.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  raddr_b0_reg_reg   | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|  raddr_b1_reg_reg   | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (controlblock)
+1
+# Link the design.
+current_design Inplace_FFT
+Current design is 'Inplace_FFT'.
+{Inplace_FFT}
+link
+
+  Linking design 'Inplace_FFT'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (8 designs)               /home/ch/mb_fft/Inplace_FFT.db, etc
+  tcbn28hpcplusbwp30p140tt0p9v25c_ccs (library) /home/ch/mb_fft/tsmc_28nm_ccs.db
+
+1
+# Setup design-specific constraints.
+set clockPorts {clk}
+clk
+create_clock -name myCLK $clockPorts -period 5.0 -waveform {0 2.5}
+1
+set idealPorts {nrst}
+nrst
+set_ideal_network $idealPorts
+1
+# Setup common design constraints.
+set_max_area 0
+1
+# Compile design.
+compile
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.3 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 12 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'controlblock'
+  Processing 'swap_BW34'
+  Processing 'MULT_BW34'
+  Processing 'BF_BW16'
+  Processing 'swap_BW32'
+  Processing 'simple_dualport_RAM_BW32_0'
+  Processing 'counter'
+  Processing 'Inplace_FFT'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'controlblock_DW01_sub_0'
+  Processing 'controlblock_DW01_add_0'
+  Processing 'controlblock_DW01_add_1'
+  Processing 'controlblock_DW01_add_2'
+  Processing 'controlblock_DW01_add_3'
+  Processing 'controlblock_DW01_add_4'
+  Processing 'BF_BW16_DW01_sub_0_DW01_sub_1'
+  Processing 'BF_BW16_DW01_sub_1_DW01_sub_2'
+  Processing 'BF_BW16_DW01_add_0_DW01_add_5'
+  Processing 'BF_BW16_DW01_add_1_DW01_add_6'
+  Processing 'counter_DW01_inc_0'
+  Processing 'MULT_BW34_DW01_add_0_DW01_add_7'
+  Processing 'MULT_BW34_DW02_mult_0'
+  Processing 'MULT_BW34_DW01_add_1_DW01_add_8'
+  Processing 'MULT_BW34_DW02_mult_1'
+  Processing 'MULT_BW34_DW01_add_2_DW01_add_9'
+  Processing 'MULT_BW34_DW01_sub_0_DW01_sub_3'
+  Processing 'MULT_BW34_DW02_mult_2'
+  Processing 'MULT_BW34_DW01_add_3_DW01_add_10'
+  Processing 'MULT_BW34_DW02_mult_3'
+  Processing 'MULT_BW34_DW01_add_4_DW01_add_11'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:30   13458.6      0.00       0.0       0.0                          
+    0:00:30   13458.6      0.00       0.0       0.0                          
+    0:00:30   13458.6      0.00       0.0       0.0                          
+    0:00:30   13458.6      0.00       0.0       0.0                          
+    0:00:30   13458.6      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9419.1      0.00       0.0       0.0                          
+    0:00:33    9408.9      0.00       0.0       0.0                          
+    0:00:34    9407.4      0.00       0.0       0.0                          
+    0:00:34    9406.9      0.00       0.0       0.0                          
+    0:00:34    9406.4      0.00       0.0       0.0                          
+    0:00:34    9406.4      0.00       0.0       0.0                          
+    0:00:34    9406.4      0.00       0.0       0.0                          
+    0:00:34    9405.4      0.00       0.0       0.0                          
+    0:00:34    9405.4      0.00       0.0       0.0                          
+    0:00:34    9405.4      0.00       0.0       0.0                          
+    0:00:34    9405.4      0.00       0.0       0.0                          
+    0:00:34    9405.4      0.00       0.0       0.0                          
+    0:00:34    9405.4      0.00       0.0       0.0                          
+    0:00:34    9359.7      0.00       0.0       0.0                          
+    0:00:34    9328.7      0.00       0.0       0.0                          
+    0:00:34    9328.7      0.00       0.0       0.0                          
+    0:00:34    9328.7      0.00       0.0       0.0                          
+    0:00:35    9328.7      0.00       0.0       0.0                          
+    0:00:35    9328.7      0.00       0.0       0.0                          
+    0:00:35    9328.7      0.00       0.0       0.0                          
+    0:00:35    9325.9      0.00       0.0       0.0                          
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'Inplace_FFT' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'bank1/clk': 2157 load(s), 1 driver(s)
+1
+#check.
+check_design 
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12-SP3
+Date:        Thu Aug  4 16:30:32 2022
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                    159
+    Unloaded inputs (LINT-8)                                       18
+    Unconnected ports (LINT-28)                                   100
+    Feedthrough (LINT-29)                                          40
+    Shorted outputs (LINT-31)                                       1
+
+Cells                                                              12
+    Nets connected to multiple pins on same cell (LINT-33)         12
+
+Nets                                                               18
+    Unloaded nets (LINT-2)                                         18
+--------------------------------------------------------------------------------
+
+Warning: In design 'Inplace_FFT', net 'butterfly/sub_10/B[15]' driven by pin 'butterfly/sub_10/B[15]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'butterfly/sub_9/B[15]' driven by pin 'butterfly/sub_9/B[15]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738_2/FS_1/A[26]' driven by pin 'mult/mult_738_2/FS_1/A[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738_2/FS_1/B[26]' driven by pin 'mult/mult_738_2/FS_1/B[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738_2/FS_1/B[25]' driven by pin 'mult/mult_738_2/FS_1/B[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738_2/FS_1/A[25]' driven by pin 'mult/mult_738_2/FS_1/A[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738/FS_1/A[26]' driven by pin 'mult/mult_738/FS_1/A[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738/FS_1/B[26]' driven by pin 'mult/mult_738/FS_1/B[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738/FS_1/B[25]' driven by pin 'mult/mult_738/FS_1/B[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_738/FS_1/A[25]' driven by pin 'mult/mult_738/FS_1/A[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737_2/FS_1/A[26]' driven by pin 'mult/mult_737_2/FS_1/A[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737_2/FS_1/B[26]' driven by pin 'mult/mult_737_2/FS_1/B[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737_2/FS_1/B[25]' driven by pin 'mult/mult_737_2/FS_1/B[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737_2/FS_1/A[25]' driven by pin 'mult/mult_737_2/FS_1/A[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737/FS_1/A[26]' driven by pin 'mult/mult_737/FS_1/A[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737/FS_1/B[26]' driven by pin 'mult/mult_737/FS_1/B[26]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737/FS_1/B[25]' driven by pin 'mult/mult_737/FS_1/B[25]' has no loads. (LINT-2)
+Warning: In design 'Inplace_FFT', net 'mult/mult_737/FS_1/A[25]' driven by pin 'mult/mult_737/FS_1/A[25]' has no loads. (LINT-2)
+Warning: In design 'BF_BW16_DW01_sub_0_DW01_sub_1', input port 'B[15]' is unloaded. (LINT-8)
+Warning: In design 'BF_BW16_DW01_sub_1_DW01_sub_2', input port 'B[15]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'B[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'B[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'B[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'B[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'B[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'B[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[25]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'B[26]' is unloaded. (LINT-8)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'B[25]' is unloaded. (LINT-8)
+Warning: In design 'BF_BW16_DW01_sub_0_DW01_sub_1', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_sub_0_DW01_sub_1', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_sub_1_DW01_sub_2', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_sub_1_DW01_sub_2', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_add_0_DW01_add_5', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_add_0_DW01_add_5', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_add_1_DW01_add_6', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'BF_BW16_DW01_add_1_DW01_add_6', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'SUM[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_0_DW01_add_7', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_0', port 'TC' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_0', port 'PRODUCT[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_0', port 'PRODUCT[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'B[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'SUM[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'SUM[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_1', port 'TC' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_1', port 'PRODUCT[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_1', port 'PRODUCT[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'B[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'SUM[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'SUM[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'DIFF[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_sub_0_DW01_sub_3', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_2', port 'TC' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_2', port 'PRODUCT[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_2', port 'PRODUCT[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'B[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'SUM[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'SUM[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_3', port 'TC' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_3', port 'PRODUCT[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW02_mult_3', port 'PRODUCT[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'B[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'SUM[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'SUM[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[9]' is connected directly to output port 'SUM[9]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[8]' is connected directly to output port 'SUM[8]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[7]' is connected directly to output port 'SUM[7]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[6]' is connected directly to output port 'SUM[6]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[5]' is connected directly to output port 'SUM[5]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[4]' is connected directly to output port 'SUM[4]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[3]' is connected directly to output port 'SUM[3]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[2]' is connected directly to output port 'SUM[2]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[1]' is connected directly to output port 'SUM[1]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_1_DW01_add_8', input port 'A[0]' is connected directly to output port 'SUM[0]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[9]' is connected directly to output port 'SUM[9]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[8]' is connected directly to output port 'SUM[8]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[7]' is connected directly to output port 'SUM[7]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[6]' is connected directly to output port 'SUM[6]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[5]' is connected directly to output port 'SUM[5]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[4]' is connected directly to output port 'SUM[4]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[3]' is connected directly to output port 'SUM[3]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[2]' is connected directly to output port 'SUM[2]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[1]' is connected directly to output port 'SUM[1]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_2_DW01_add_9', input port 'A[0]' is connected directly to output port 'SUM[0]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[9]' is connected directly to output port 'SUM[9]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[8]' is connected directly to output port 'SUM[8]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[7]' is connected directly to output port 'SUM[7]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[6]' is connected directly to output port 'SUM[6]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[5]' is connected directly to output port 'SUM[5]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[4]' is connected directly to output port 'SUM[4]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[3]' is connected directly to output port 'SUM[3]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[2]' is connected directly to output port 'SUM[2]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[1]' is connected directly to output port 'SUM[1]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_3_DW01_add_10', input port 'A[0]' is connected directly to output port 'SUM[0]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[9]' is connected directly to output port 'SUM[9]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[8]' is connected directly to output port 'SUM[8]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[7]' is connected directly to output port 'SUM[7]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[6]' is connected directly to output port 'SUM[6]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[5]' is connected directly to output port 'SUM[5]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[4]' is connected directly to output port 'SUM[4]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[3]' is connected directly to output port 'SUM[3]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[2]' is connected directly to output port 'SUM[2]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[1]' is connected directly to output port 'SUM[1]'. (LINT-29)
+Warning: In design 'MULT_BW34_DW01_add_4_DW01_add_11', input port 'A[0]' is connected directly to output port 'SUM[0]'. (LINT-29)
+Warning: In design 'controlblock', output port 're_b0' is connected directly to output port 're_b1'. (LINT-31)
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'sub_10'. (LINT-33)
+   Net 'Gi[15]' is connected to pins 'A[16]', 'A[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'sub_10'. (LINT-33)
+   Net 'Hi[15]' is connected to pins 'B[16]', 'B[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'sub_9'. (LINT-33)
+   Net 'Gr[15]' is connected to pins 'A[16]', 'A[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'sub_9'. (LINT-33)
+   Net 'Hr[15]' is connected to pins 'B[16]', 'B[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'add_8'. (LINT-33)
+   Net 'Gi[15]' is connected to pins 'A[16]', 'A[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'add_8'. (LINT-33)
+   Net 'Hi[15]' is connected to pins 'B[16]', 'B[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'add_7'. (LINT-33)
+   Net 'Gr[15]' is connected to pins 'A[16]', 'A[15]''.
+Warning: In design 'BF_BW16', the same net is connected to more than one pin on submodule 'add_7'. (LINT-33)
+   Net 'Hr[15]' is connected to pins 'B[16]', 'B[15]''.
+Warning: In design 'MULT_BW34_DW02_mult_0', the same net is connected to more than one pin on submodule 'FS_1'. (LINT-33)
+   Net 'net13648' is connected to pins 'B[9]', 'B[8]'', 'B[7]', 'B[6]', 'B[5]', 'B[4]', 'B[3]', 'B[2]', 'B[1]', 'B[0]', 'CI'.
+Warning: In design 'MULT_BW34_DW02_mult_1', the same net is connected to more than one pin on submodule 'FS_1'. (LINT-33)
+   Net 'net14196' is connected to pins 'B[9]', 'B[8]'', 'B[7]', 'B[6]', 'B[5]', 'B[4]', 'B[3]', 'B[2]', 'B[1]', 'B[0]', 'CI'.
+Warning: In design 'MULT_BW34_DW02_mult_2', the same net is connected to more than one pin on submodule 'FS_1'. (LINT-33)
+   Net 'net14892' is connected to pins 'B[9]', 'B[8]'', 'B[7]', 'B[6]', 'B[5]', 'B[4]', 'B[3]', 'B[2]', 'B[1]', 'B[0]', 'CI'.
+Warning: In design 'MULT_BW34_DW02_mult_3', the same net is connected to more than one pin on submodule 'FS_1'. (LINT-33)
+   Net 'net15440' is connected to pins 'B[9]', 'B[8]'', 'B[7]', 'B[6]', 'B[5]', 'B[4]', 'B[3]', 'B[2]', 'B[1]', 'B[0]', 'CI'.
+1
+check_timing 
+Information: Updating design information... (UID-85)
+Warning: Design 'Inplace_FFT' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+Warning: The following input ports have no clock_relative delay specified, the command set_input_delay without -clock option will be ignored. (TIM-216)
+--------------------
+nrst
+start
+valid
+inReal[15]
+inReal[14]
+inReal[13]
+inReal[12]
+inReal[11]
+inReal[10]
+inReal[9]
+inReal[8]
+inReal[7]
+inReal[6]
+inReal[5]
+inReal[4]
+inReal[3]
+inReal[2]
+inReal[1]
+inReal[0]
+inImag[15]
+inImag[14]
+inImag[13]
+inImag[12]
+inImag[11]
+inImag[10]
+inImag[9]
+inImag[8]
+inImag[7]
+inImag[6]
+inImag[5]
+inImag[4]
+inImag[3]
+inImag[2]
+inImag[1]
+inImag[0]
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+ctr/raddr_b0_reg_reg[0]/E
+ctr/raddr_b0_reg_reg[1]/E
+ctr/raddr_b0_reg_reg[2]/E
+ctr/raddr_b0_reg_reg[3]/E
+ctr/raddr_b0_reg_reg[4]/E
+ctr/raddr_b1_reg_reg[0]/E
+ctr/raddr_b1_reg_reg[1]/E
+ctr/raddr_b1_reg_reg[2]/E
+ctr/raddr_b1_reg_reg[3]/E
+ctr/raddr_b1_reg_reg[4]/E
+outImag0[0]
+outImag0[1]
+outImag0[2]
+outImag0[3]
+outImag0[4]
+outImag0[5]
+outImag0[6]
+outImag0[7]
+outImag0[8]
+outImag0[9]
+outImag0[10]
+outImag0[11]
+outImag0[12]
+outImag0[13]
+outImag0[14]
+outImag0[15]
+outImag1[0]
+outImag1[1]
+outImag1[2]
+outImag1[3]
+outImag1[4]
+outImag1[5]
+outImag1[6]
+outImag1[7]
+outImag1[8]
+outImag1[9]
+outImag1[10]
+outImag1[11]
+outImag1[12]
+outImag1[13]
+outImag1[14]
+outImag1[15]
+outReal0[0]
+outReal0[1]
+outReal0[2]
+outReal0[3]
+outReal0[4]
+outReal0[5]
+outReal0[6]
+outReal0[7]
+outReal0[8]
+outReal0[9]
+outReal0[10]
+outReal0[11]
+outReal0[12]
+outReal0[13]
+outReal0[14]
+outReal0[15]
+outReal1[0]
+outReal1[1]
+outReal1[2]
+outReal1[3]
+outReal1[4]
+outReal1[5]
+outReal1[6]
+outReal1[7]
+outReal1[8]
+outReal1[9]
+outReal1[10]
+outReal1[11]
+outReal1[12]
+outReal1[13]
+outReal1[14]
+outReal1[15]
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+#report.
+report_qor 
+ 
+****************************************
+Report : qor
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+
+  Timing Path Group 'myCLK'
+  -----------------------------------
+  Levels of Logic:              56.00
+  Critical Path Length:          2.28
+  Critical Path Slack:           2.68
+  Critical Path Clk Period:      5.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         23
+  Hierarchical Port Count:       1643
+  Leaf Cell Count:               6768
+  Buf/Inv Cell Count:             499
+  Buf Cell Count:                   0
+  Inv Cell Count:                 499
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:      4611
+  Sequential Cell Count:         2157
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:     3644.927967
+  Noncombinational Area:  5680.961805
+  Buf/Inv Area:            125.748002
+  Total Buffer Area:             0.00
+  Total Inverter Area:         125.75
+  Macro/Black Box Area:      0.000000
+  Net Area:                  0.000000
+  -----------------------------------
+  Cell Area:              9325.889772
+  Design Area:            9325.889772
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          7550
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: bitelab-pc
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    2.75
+  Logic Optimization:                  5.91
+  Mapping Optimization:                5.82
+  -----------------------------------------
+  Overall Compile Time:               17.33
+  Overall Compile Wall Clock Time:    17.84
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
+report_resources 
+ 
+****************************************
+Report : resources
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+
+No resource sharing information to report.
+
+No implementations to report
+1
+report_cell 
+ 
+****************************************
+Report : cell
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    p - parameterized
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U97                       MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U98                       INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U99                       MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U100                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U101                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U102                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U103                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U104                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U105                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U106                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U107                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U108                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U109                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U110                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U111                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U112                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U113                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U114                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U115                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U116                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U117                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U118                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U119                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U120                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U121                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U122                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U123                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U124                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U125                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U126                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U127                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U128                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U129                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U130                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U131                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U132                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U133                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U134                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U135                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U136                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U137                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U138                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U139                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U140                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U141                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U142                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U143                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U144                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U145                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U146                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U147                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U148                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U149                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U150                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U151                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U152                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U153                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U154                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U155                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U156                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U157                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U158                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U159                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U160                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U161                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U162                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U163                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U164                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U165                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U166                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U167                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U168                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U169                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U170                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U171                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U172                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U173                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U174                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U175                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U176                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U177                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U178                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U179                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U180                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U181                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U182                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U183                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U184                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U185                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U186                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U187                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U188                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U189                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U190                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U191                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U192                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U193                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U194                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U195                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U196                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U197                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U198                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U199                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U200                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U201                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U202                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U203                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U204                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U205                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U206                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U207                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U208                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U209                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U210                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U211                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U212                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U213                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U214                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U215                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U216                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U217                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U218                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U219                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U220                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U221                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U222                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U223                      MAOI22D1BWP30P140
+                                          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.756000  
+U224                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U225                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U226                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U227                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U228                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U229                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U230                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U231                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U232                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U233                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U234                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U235                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U236                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U237                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U238                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U239                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U240                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U241                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U242                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U243                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U244                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U245                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U246                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U247                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U248                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U249                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U250                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U251                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U252                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U253                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U254                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U255                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+U256                      INVD1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                                          0.252000  
+bank0                     simple_dualport_RAM_BW32_0      3273.227902
+                                                                    h, n, p
+bank1                     simple_dualport_RAM_BW32_1      3273.227902
+                                                                    h, n, p
+butterfly                 BF_BW16                         149.435998
+                                                                    h, p
+counter_inst              counter                         34.776000 h, n
+ctr                       controlblock                    90.971999 h, n
+mult                      MULT_BW34                       2314.745972
+                                                                    h, n, p
+swap0                     swap_BW32                       56.700000 h, p
+swap1                     swap_BW34                       60.228000 h, p
+--------------------------------------------------------------------------------
+Total 168 cells                                           9325.889772
+1
+report_constraint 
+ 
+****************************************
+Report : constraint
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+
+                                                   Weighted
+    Group (max_delay/setup)      Cost     Weight     Cost
+    -----------------------------------------------------
+    myCLK                        0.00      1.00      0.00
+    default                      0.00      1.00      0.00
+    -----------------------------------------------------
+    max_delay/setup                                  0.00
+
+                              Total Neg  Critical
+    Group (critical_range)      Slack    Endpoints   Cost
+    -----------------------------------------------------
+    myCLK                        0.00         0      0.00
+    default                      0.00         0      0.00
+    -----------------------------------------------------
+    critical_range                                   0.00
+
+                                                   Weighted
+    Group (min_delay/hold)       Cost     Weight     Cost
+    -----------------------------------------------------
+    myCLK (no fix_hold)          0.00      1.00      0.00
+    default                      0.00      1.00      0.00
+    -----------------------------------------------------
+    min_delay/hold                                   0.00
+
+
+    Constraint                                       Cost
+    -----------------------------------------------------
+    min_capacitance                                  0.00 (MET)
+    max_transition                                   0.00 (MET)
+    max_capacitance                                  0.00 (MET)
+    max_delay/setup                                  0.00 (MET)
+    sequential_clock_pulse_width                     0.00 (MET)
+    critical_range                                   0.00 (MET)
+    max_area                                      9325.89 (VIOLATED)
+
+
+1
+report_area 
+ 
+****************************************
+Report : area
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+Library(s) Used:
+
+    tcbn28hpcplusbwp30p140tt0p9v25c_ccs (File: /home/ch/mb_fft/tsmc_28nm_ccs.db)
+
+Number of ports:                         1743
+Number of nets:                          9071
+Number of cells:                         6791
+Number of combinational cells:           4611
+Number of sequential cells:              2157
+Number of macros/black boxes:               0
+Number of buf/inv:                        499
+Number of references:                      10
+
+Combinational area:               3644.927967
+Buf/Inv area:                      125.748002
+Noncombinational area:            5680.961805
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  9325.889772
+Total area:                 undefined
+1
+report_area -hierarchy 
+ 
+****************************************
+Report : area
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+Library(s) Used:
+
+    tcbn28hpcplusbwp30p140tt0p9v25c_ccs (File: /home/ch/mb_fft/tsmc_28nm_ccs.db)
+
+Number of ports:                         1743
+Number of nets:                          9071
+Number of cells:                         6791
+Number of combinational cells:           4611
+Number of sequential cells:              2157
+Number of macros/black boxes:               0
+Number of buf/inv:                        499
+Number of references:                      10
+
+Combinational area:               3644.927967
+Buf/Inv area:                      125.748002
+Noncombinational area:            5680.961805
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  9325.889772
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  ---------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
+                                  Total      Total    national   national   boxes   Design
+--------------------------------  ---------  -------  ---------  ---------  ------  --------------------------------
+Inplace_FFT                       9325.8898    100.0    72.5760     0.0000  0.0000  Inplace_FFT
+bank0                             3273.2279     35.1   479.0520  2794.1759  0.0000  simple_dualport_RAM_BW32_0
+bank1                             3273.2279     35.1   479.0520  2794.1759  0.0000  simple_dualport_RAM_BW32_1
+butterfly                          149.4360      1.6     0.2520     0.0000  0.0000  BF_BW16
+butterfly/add_7                     35.2800      0.4    35.2800     0.0000  0.0000  BF_BW16_DW01_add_1_DW01_add_6
+butterfly/add_8                     35.2800      0.4    35.2800     0.0000  0.0000  BF_BW16_DW01_add_0_DW01_add_5
+butterfly/sub_10                    39.3120      0.4    39.3120     0.0000  0.0000  BF_BW16_DW01_sub_0_DW01_sub_1
+butterfly/sub_9                     39.3120      0.4    39.3120     0.0000  0.0000  BF_BW16_DW01_sub_1_DW01_sub_2
+counter_inst                        34.7760      0.4     8.6940    15.1200  0.0000  counter
+counter_inst/add_11                 10.9620      0.1    10.9620     0.0000  0.0000  counter_DW01_inc_0
+ctr                                 90.9720      1.0    58.8420    32.1300  0.0000  controlblock
+mult                              2314.7460     24.8   110.8800    45.3600  0.0000  MULT_BW34
+mult/add_738                        46.3680      0.5    46.3680     0.0000  0.0000  MULT_BW34_DW01_add_0_DW01_add_7
+mult/mult_737                      514.9620      5.5   476.2800     0.0000  0.0000  MULT_BW34_DW02_mult_3
+mult/mult_737/FS_1                  38.6820      0.4    38.6820     0.0000  0.0000  MULT_BW34_DW01_add_4_DW01_add_11
+mult/mult_737_2                    514.9620      5.5   476.2800     0.0000  0.0000  MULT_BW34_DW02_mult_2
+mult/mult_737_2/FS_1                38.6820      0.4    38.6820     0.0000  0.0000  MULT_BW34_DW01_add_3_DW01_add_10
+mult/mult_738                      514.9620      5.5   476.2800     0.0000  0.0000  MULT_BW34_DW02_mult_1
+mult/mult_738/FS_1                  38.6820      0.4    38.6820     0.0000  0.0000  MULT_BW34_DW01_add_2_DW01_add_9
+mult/mult_738_2                    514.9620      5.5   476.2800     0.0000  0.0000  MULT_BW34_DW02_mult_0
+mult/mult_738_2/FS_1                38.6820      0.4    38.6820     0.0000  0.0000  MULT_BW34_DW01_add_1_DW01_add_8
+mult/sub_737                        52.2900      0.6    52.2900     0.0000  0.0000  MULT_BW34_DW01_sub_0_DW01_sub_3
+swap0                               56.7000      0.6    56.7000     0.0000  0.0000  swap_BW32
+swap1                               60.2280      0.6    60.2280     0.0000  0.0000  swap_BW34
+--------------------------------  ---------  -------  ---------  ---------  ------  --------------------------------
+Total                                                 3644.9280  5680.9618  0.0000
+
+1
+report_reference 
+ 
+****************************************
+Report : reference
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+BF_BW16                         149.435998       1    149.435998  h
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      96     24.192000  
+MAOI22D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000      64     48.383999  
+MULT_BW34                      2314.745972       1   2314.745972  h, n
+controlblock                     90.971999       1     90.971999  h, n
+counter                          34.776000       1     34.776000  h, n
+simple_dualport_RAM_BW32_0     3273.227902       1   3273.227902  h, n
+simple_dualport_RAM_BW32_1     3273.227902       1   3273.227902  h, n
+swap_BW32                        56.700000       1     56.700000  h
+swap_BW34                        60.228000       1     60.228000  h
+-----------------------------------------------------------------------------
+Total 10 references                                  9325.889772
+1
+report_reference -hierarchy 
+ 
+****************************************
+Report : reference
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+BF_BW16                         149.435998       1    149.435998  h
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      96     24.192000  
+MAOI22D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000      64     48.383999  
+MULT_BW34                      2314.745972       1   2314.745972  h, n
+controlblock                     90.971999       1     90.971999  h, n
+counter                          34.776000       1     34.776000  h, n
+simple_dualport_RAM_BW32_0     3273.227902       1   3273.227902  h, n
+simple_dualport_RAM_BW32_1     3273.227902       1   3273.227902  h, n
+swap_BW32                        56.700000       1     56.700000  h
+swap_BW34                        60.228000       1     60.228000  h
+-----------------------------------------------------------------------------
+Total 10 references                                  9325.889772
+
+****************************************
+Design: BF_BW16 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+BF_BW16_DW01_add_0_DW01_add_5    35.279999       1     35.279999  h
+BF_BW16_DW01_add_1_DW01_add_6    35.279999       1     35.279999  h
+BF_BW16_DW01_sub_0_DW01_sub_1    39.312000       1     39.312000  h
+BF_BW16_DW01_sub_1_DW01_sub_2    39.312000       1     39.312000  h
+TIELBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+-----------------------------------------------------------------------------
+Total 5 references                                    149.435998
+
+****************************************
+Design: BF_BW16_DW01_add_0_DW01_add_5 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000      15     32.129999  r
+XOR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 4 references                                     35.279999
+
+****************************************
+Design: BF_BW16_DW01_add_1_DW01_add_6 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000      15     32.129999  r
+XOR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 4 references                                     35.279999
+
+****************************************
+Design: BF_BW16_DW01_sub_0_DW01_sub_1 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000      15     32.129999  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      16      4.032000  
+OR2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+XNR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 5 references                                     39.312000
+
+****************************************
+Design: BF_BW16_DW01_sub_1_DW01_sub_2 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000      15     32.129999  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      16      4.032000  
+OR2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+XNR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 5 references                                     39.312000
+
+****************************************
+Design: MULT_BW34 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       4      2.016000  
+AN3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       3      1.890000  
+AN4D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       4      3.024000  
+AO21D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+AOI21D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      10      5.040000  
+AOI22D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       4      2.520000  
+AOI31D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+AOI211D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       4      2.520000  
+AOI221D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       3      2.268000  
+AOI222D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.008000       3      3.024000  
+CKND2D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      23      8.694000  
+DFQD2BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.890000      24     45.360000  n
+IND2D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+IND3D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+IND4D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       9      6.804000  
+INR2D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       5      2.520000  
+INR3D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       3      1.890000  
+INR4D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       2      1.512000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      38      9.576000  
+MULT_BW34_DW01_add_0_DW01_add_7
+                                 46.367999       1     46.367999  h
+MULT_BW34_DW01_sub_0_DW01_sub_3
+                                 52.289999       1     52.289999  h
+MULT_BW34_DW02_mult_0           514.961993       1    514.961993  h
+MULT_BW34_DW02_mult_1           514.961993       1    514.961993  h
+MULT_BW34_DW02_mult_2           514.961993       1    514.961993  h
+MULT_BW34_DW02_mult_3           514.961993       1    514.961993  h
+ND3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      15      7.560000  
+ND4D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000      14      8.820000  
+NR2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      30     11.340000  
+NR3D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      12      6.048000  
+NR4D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       9      5.670000  
+OAI21D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+OAI22D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+OAI211D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OAI221D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       4      3.528000  
+OAI222D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.008000       8      8.064000  
+OR2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+OR4D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       1      0.756000  
+TIEHBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+TIELBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+-----------------------------------------------------------------------------
+Total 39 references                                  2314.745972
+
+****************************************
+Design: MULT_BW34_DW01_add_0_DW01_add_7 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000      16     34.271999  r
+IOA21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       9      5.670000  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       8      4.032000  
+OAI211D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 5 references                                     46.367999
+
+****************************************
+Design: MULT_BW34_DW01_sub_0_DW01_sub_3 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       5      2.520000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000      16     34.271999  r
+INR2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      22      5.544000  
+MAOI22D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       4      3.024000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       4      1.512000  
+OAI22D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       5      3.150000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 8 references                                     52.289999
+
+****************************************
+Design: MULT_BW34_DW02_mult_0 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      32     16.128000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000     162    347.003994  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      30      7.560000  
+MULT_BW34_DW01_add_1_DW01_add_8
+                                 38.682000       1     38.682000  h
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000     204     77.111998  
+TIELBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+XOR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      32     28.224001  
+-----------------------------------------------------------------------------
+Total 7 references                                    514.961993
+
+****************************************
+Design: MULT_BW34_DW01_add_1_DW01_add_8 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+AOI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       8      3.024000  
+IND2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+INR2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       6      1.512000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      19      7.182000  
+OA21D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       7      3.528000  
+XNR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      12     10.584000  
+XOR3UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 12 references                                    38.682000
+
+****************************************
+Design: MULT_BW34_DW02_mult_1 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      32     16.128000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000     162    347.003994  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      30      7.560000  
+MULT_BW34_DW01_add_2_DW01_add_9
+                                 38.682000       1     38.682000  h
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000     204     77.111998  
+TIELBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+XOR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      32     28.224001  
+-----------------------------------------------------------------------------
+Total 7 references                                    514.961993
+
+****************************************
+Design: MULT_BW34_DW01_add_2_DW01_add_9 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+AOI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       8      3.024000  
+IND2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+INR2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       6      1.512000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      19      7.182000  
+OA21D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       7      3.528000  
+XNR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      12     10.584000  
+XOR3UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 12 references                                    38.682000
+
+****************************************
+Design: MULT_BW34_DW02_mult_2 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      32     16.128000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000     162    347.003994  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      30      7.560000  
+MULT_BW34_DW01_add_3_DW01_add_10
+                                 38.682000       1     38.682000  h
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000     204     77.111998  
+TIELBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+XOR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      32     28.224001  
+-----------------------------------------------------------------------------
+Total 7 references                                    514.961993
+
+****************************************
+Design: MULT_BW34_DW01_add_3_DW01_add_10 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+AOI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       8      3.024000  
+IND2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+INR2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       6      1.512000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      19      7.182000  
+OA21D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       7      3.528000  
+XNR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      12     10.584000  
+XOR3UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 12 references                                    38.682000
+
+****************************************
+Design: MULT_BW34_DW02_mult_3 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      32     16.128000  
+FA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.142000     162    347.003994  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      30      7.560000  
+MULT_BW34_DW01_add_4_DW01_add_11
+                                 38.682000       1     38.682000  h
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000     204     77.111998  
+TIELBWP30P140      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+XOR2UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      32     28.224001  
+-----------------------------------------------------------------------------
+Total 7 references                                    514.961993
+
+****************************************
+Design: MULT_BW34_DW01_add_4_DW01_add_11 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+AOI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       8      3.024000  
+IND2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       6      3.024000  
+INR2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       6      1.512000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      19      7.182000  
+OA21D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       7      3.528000  
+XNR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+XOR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      12     10.584000  
+XOR3UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+-----------------------------------------------------------------------------
+Total 12 references                                    38.682000
+
+****************************************
+Design: controlblock 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       5      2.520000  
+AN3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+AO21D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000      10      6.300000  
+AO21D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+AO22D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       1      0.756000  
+AOI22D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       5      3.150000  
+AOI22D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+AOI32D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       1      0.756000  
+AOI221D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       1      0.756000  
+AOI222D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.008000       5      5.040000  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       7      2.646000  
+CKND2D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       4      1.512000  
+DFQD2BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.890000       3      5.670000  n
+EDFQD2BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.646000      10     26.459999  n
+IND3D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+IND4D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000       1      0.756000  
+INR2D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       5      2.520000  
+INR2D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       3      1.512000  
+INR3D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      15      3.780000  
+ND3D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+ND3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       2      1.008000  
+ND4D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       4      1.512000  
+NR2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       2      0.756000  
+NR3D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       3      1.512000  
+OAI21D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       3      1.512000  
+OAI22D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OAI31D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+OAI211D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       5      3.150000  
+OAI211D1BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+OR2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+OR3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       1      0.630000  
+XNR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+XOR3UD1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.764000       1      1.764000  
+XOR4D1BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.646000       2      5.292000  
+-----------------------------------------------------------------------------
+Total 36 references                                    90.971999
+
+****************************************
+Design: counter 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AOI22D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       8      5.040000  
+CKND2D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       9      3.402000  
+DFQD2BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.890000       8     15.120000  n
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+counter_DW01_inc_0               10.962000       1     10.962000  h
+-----------------------------------------------------------------------------
+Total 5 references                                     34.776000
+
+****************************************
+Design: counter_DW01_inc_0 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+HA1D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.638000       6      9.828000  r
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       1      0.252000  
+XOR2UD0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000       1      0.882000  
+-----------------------------------------------------------------------------
+Total 3 references                                     10.962000
+
+****************************************
+Design: simple_dualport_RAM_BW32_0 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       2      1.008000  
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      35     17.640000  
+AN3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+AO22D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000      32     24.191999  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      16      6.048000  
+EDFQD2BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.646000    1056   2794.175903  n
+INR3D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       8      2.016000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       6      2.268000  
+NR3D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       8      4.032000  
+NR4D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000     128     80.639999  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+OAI22D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000     447    281.609998  
+OAI221D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      63     55.566002  
+OAI222D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.008000       1      1.008000  
+-----------------------------------------------------------------------------
+Total 15 references                                  3273.227902
+
+****************************************
+Design: simple_dualport_RAM_BW32_1 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AN2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       2      1.008000  
+AN2D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000      35     17.640000  
+AN3D1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+AO22D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.756000      32     24.191999  
+CKND2D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000      16      6.048000  
+EDFQD2BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  2.646000    1056   2794.175903  n
+INR3D0BWP30P140    tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000       2      1.260000  
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000       8      2.016000  
+NR2D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.378000       6      2.268000  
+NR3D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       8      4.032000  
+NR4D0BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000     128     80.639999  
+OAI21D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.504000       1      0.504000  
+OAI22D0BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000     447    281.609998  
+OAI221D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.882000      63     55.566002  
+OAI222D0BWP30P140  tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  1.008000       1      1.008000  
+-----------------------------------------------------------------------------
+Total 15 references                                  3273.227902
+
+****************************************
+Design: swap_BW32 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      65     16.380000  
+OAI22D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000      64     40.320000  
+-----------------------------------------------------------------------------
+Total 2 references                                     56.700000
+
+****************************************
+Design: swap_BW34 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+INVD1BWP30P140     tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.252000      69     17.388000  
+OAI22D1BWP30P140   tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+                                  0.630000      68     42.840000  
+-----------------------------------------------------------------------------
+Total 2 references                                     60.228000
+1
+report_timing -max_paths 3 
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 3
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:32 2022
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: tt0p9v25c   Library: tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+Wire Load Model Mode: segmented
+
+  Startpoint: counter_inst/cnt_reg[4]
+              (rising edge-triggered flip-flop clocked by myCLK)
+  Endpoint: bank0/ram_reg[0][31]
+            (rising edge-triggered flip-flop clocked by myCLK)
+  Path Group: myCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simple_dualport_RAM_BW32_1
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  controlblock       ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  simple_dualport_RAM_BW32_0
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  Inplace_FFT        ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  counter            ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  counter_DW01_inc_0 ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  swap_BW32          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16_DW01_add_1_DW01_add_6
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16_DW01_sub_1_DW01_sub_2
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16            ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW02_mult_3
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW02_mult_1
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW01_add_4_DW01_add_11
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW01_sub_0_DW01_sub_3
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  swap_BW34          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock myCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_inst/cnt_reg[4]/CP (DFQD2BWP30P140)             0.00 #     0.00 r
+  counter_inst/cnt_reg[4]/Q (DFQD2BWP30P140)              0.06       0.06 f
+  counter_inst/cnt[4] (counter)                           0.00       0.06 f
+  ctr/cnt[4] (controlblock)                               0.00       0.06 f
+  ctr/U18/ZN (XNR3UD1BWP30P140)                           0.05       0.11 f
+  ctr/U17/Z (XOR4D1BWP30P140)                             0.05       0.16 r
+  ctr/U101/ZN (ND3D0BWP30P140)                            0.02       0.18 f
+  ctr/U102/ZN (CKND2D0BWP30P140)                          0.20       0.38 r
+  ctr/swap0_en (controlblock)                             0.00       0.38 r
+  swap0/swap_en (swap_BW32)                               0.00       0.38 r
+  swap0/U1/ZN (INVD1BWP30P140)                            0.19       0.57 f
+  swap0/U37/ZN (OAI22D1BWP30P140)                         0.06       0.63 r
+  swap0/out_data2[16] (swap_BW32)                         0.00       0.63 r
+  butterfly/Hr[0] (BF_BW16)                               0.00       0.63 r
+  butterfly/sub_9/B[0] (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                                          0.00       0.63 r
+  butterfly/sub_9/U4/ZN (INVD1BWP30P140)                  0.02       0.65 f
+  butterfly/sub_9/U1/Z (OR2D1BWP30P140)                   0.02       0.68 f
+  butterfly/sub_9/U2_1/CO (FA1D1BWP30P140)                0.03       0.71 f
+  butterfly/sub_9/U2_2/CO (FA1D1BWP30P140)                0.03       0.74 f
+  butterfly/sub_9/U2_3/CO (FA1D1BWP30P140)                0.03       0.77 f
+  butterfly/sub_9/U2_4/CO (FA1D1BWP30P140)                0.03       0.79 f
+  butterfly/sub_9/U2_5/CO (FA1D1BWP30P140)                0.03       0.82 f
+  butterfly/sub_9/U2_6/CO (FA1D1BWP30P140)                0.03       0.85 f
+  butterfly/sub_9/U2_7/CO (FA1D1BWP30P140)                0.03       0.88 f
+  butterfly/sub_9/U2_8/CO (FA1D1BWP30P140)                0.03       0.91 f
+  butterfly/sub_9/U2_9/CO (FA1D1BWP30P140)                0.03       0.94 f
+  butterfly/sub_9/U2_10/CO (FA1D1BWP30P140)               0.03       0.97 f
+  butterfly/sub_9/U2_11/CO (FA1D1BWP30P140)               0.03       1.00 f
+  butterfly/sub_9/U2_12/CO (FA1D1BWP30P140)               0.03       1.03 f
+  butterfly/sub_9/U2_13/CO (FA1D1BWP30P140)               0.03       1.06 f
+  butterfly/sub_9/U2_14/CO (FA1D1BWP30P140)               0.03       1.09 f
+  butterfly/sub_9/U2_15/CO (FA1D1BWP30P140)               0.03       1.11 f
+  butterfly/sub_9/U2_16/Z (XOR3UD1BWP30P140)              0.04       1.15 f
+  butterfly/sub_9/DIFF[16] (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                                          0.00       1.15 f
+  butterfly/Yr[16] (BF_BW16)                              0.00       1.15 f
+  mult/data_in[33] (MULT_BW34)                            0.00       1.15 f
+  mult/mult_737/B[16] (MULT_BW34_DW02_mult_3)             0.00       1.15 f
+  mult/mult_737/U21/ZN (INVD1BWP30P140)                   0.04       1.19 r
+  mult/mult_737/U293/ZN (NR2D0BWP30P140)                  0.02       1.21 f
+  mult/mult_737/U79/Z (XOR2UD1BWP30P140)                  0.03       1.23 f
+  mult/mult_737/S2_2_14/S (FA1D1BWP30P140)                0.05       1.29 r
+  mult/mult_737/S2_3_13/S (FA1D1BWP30P140)                0.05       1.34 f
+  mult/mult_737/S2_4_12/S (FA1D1BWP30P140)                0.05       1.39 r
+  mult/mult_737/S2_5_11/S (FA1D1BWP30P140)                0.05       1.44 f
+  mult/mult_737/S2_6_10/S (FA1D1BWP30P140)                0.05       1.49 r
+  mult/mult_737/S2_7_9/S (FA1D1BWP30P140)                 0.05       1.54 f
+  mult/mult_737/S2_8_8/S (FA1D1BWP30P140)                 0.05       1.59 r
+  mult/mult_737/S2_9_7/S (FA1D1BWP30P140)                 0.05       1.64 f
+  mult/mult_737/S2_10_6/S (FA1D1BWP30P140)                0.05       1.69 r
+  mult/mult_737/S4_5/S (FA1D1BWP30P140)                   0.05       1.74 f
+  mult/mult_737/S14_16_0/S (FA1D1BWP30P140)               0.05       1.79 r
+  mult/mult_737/FS_1/A[14] (MULT_BW34_DW01_add_4_DW01_add_11)
+                                                          0.00       1.79 r
+  mult/mult_737/FS_1/U58/Z (AN2D0BWP30P140)               0.02       1.81 r
+  mult/mult_737/FS_1/U56/ZN (NR2D0BWP30P140)              0.01       1.82 f
+  mult/mult_737/FS_1/U55/Z (XOR2UD0BWP30P140)             0.03       1.85 f
+  mult/mult_737/FS_1/SUM[14] (MULT_BW34_DW01_add_4_DW01_add_11)
+                                                          0.00       1.85 f
+  mult/mult_737/PRODUCT[16] (MULT_BW34_DW02_mult_3)       0.00       1.85 f
+  mult/sub_737/A[16] (MULT_BW34_DW01_sub_0_DW01_sub_3)
+                                                          0.00       1.85 f
+  mult/sub_737/U2_16/CO (FA1D1BWP30P140)                  0.04       1.89 f
+  mult/sub_737/U2_17/CO (FA1D1BWP30P140)                  0.03       1.92 f
+  mult/sub_737/U2_18/CO (FA1D1BWP30P140)                  0.03       1.95 f
+  mult/sub_737/U2_19/CO (FA1D1BWP30P140)                  0.03       1.98 f
+  mult/sub_737/U2_20/CO (FA1D1BWP30P140)                  0.03       2.01 f
+  mult/sub_737/U2_21/CO (FA1D1BWP30P140)                  0.03       2.03 f
+  mult/sub_737/U2_22/CO (FA1D1BWP30P140)                  0.03       2.06 f
+  mult/sub_737/U2_23/CO (FA1D1BWP30P140)                  0.03       2.09 f
+  mult/sub_737/U2_24/CO (FA1D1BWP30P140)                  0.03       2.12 f
+  mult/sub_737/U2_25/CO (FA1D1BWP30P140)                  0.03       2.15 f
+  mult/sub_737/U2_26/Z (XOR3UD1BWP30P140)                 0.02       2.17 f
+  mult/sub_737/DIFF[26] (MULT_BW34_DW01_sub_0_DW01_sub_3)
+                                                          0.00       2.17 f
+  mult/data_out[33] (MULT_BW34)                           0.00       2.17 f
+  swap1/in_data2[33] (swap_BW34)                          0.00       2.17 f
+  swap1/U129/ZN (INVD1BWP30P140)                          0.01       2.18 r
+  swap1/U55/ZN (OAI22D1BWP30P140)                         0.01       2.19 f
+  swap1/out_data1[33] (swap_BW34)                         0.00       2.19 f
+  U223/ZN (MAOI22D1BWP30P140)                             0.02       2.21 r
+  U224/ZN (INVD1BWP30P140)                                0.07       2.28 f
+  bank0/data_in[31] (simple_dualport_RAM_BW32_0)          0.00       2.28 f
+  bank0/ram_reg[0][31]/D (EDFQD2BWP30P140)                0.00       2.28 f
+  data arrival time                                                  2.28
+
+  clock myCLK (rise edge)                                 5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  bank0/ram_reg[0][31]/CP (EDFQD2BWP30P140)               0.00       5.00 r
+  library setup time                                     -0.04       4.96
+  data required time                                                 4.96
+  --------------------------------------------------------------------------
+  data required time                                                 4.96
+  data arrival time                                                 -2.28
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.68
+
+
+  Startpoint: counter_inst/cnt_reg[4]
+              (rising edge-triggered flip-flop clocked by myCLK)
+  Endpoint: bank0/ram_reg[0][15]
+            (rising edge-triggered flip-flop clocked by myCLK)
+  Path Group: myCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simple_dualport_RAM_BW32_1
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  controlblock       ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  simple_dualport_RAM_BW32_0
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  Inplace_FFT        ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  counter            ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  counter_DW01_inc_0 ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  swap_BW32          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16_DW01_add_1_DW01_add_6
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16_DW01_sub_1_DW01_sub_2
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16            ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW02_mult_3
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW02_mult_1
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW01_add_2_DW01_add_9
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW01_add_0_DW01_add_7
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  swap_BW34          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock myCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_inst/cnt_reg[4]/CP (DFQD2BWP30P140)             0.00 #     0.00 r
+  counter_inst/cnt_reg[4]/Q (DFQD2BWP30P140)              0.06       0.06 f
+  counter_inst/cnt[4] (counter)                           0.00       0.06 f
+  ctr/cnt[4] (controlblock)                               0.00       0.06 f
+  ctr/U18/ZN (XNR3UD1BWP30P140)                           0.05       0.11 f
+  ctr/U17/Z (XOR4D1BWP30P140)                             0.05       0.16 r
+  ctr/U101/ZN (ND3D0BWP30P140)                            0.02       0.18 f
+  ctr/U102/ZN (CKND2D0BWP30P140)                          0.20       0.38 r
+  ctr/swap0_en (controlblock)                             0.00       0.38 r
+  swap0/swap_en (swap_BW32)                               0.00       0.38 r
+  swap0/U1/ZN (INVD1BWP30P140)                            0.19       0.57 f
+  swap0/U37/ZN (OAI22D1BWP30P140)                         0.06       0.63 r
+  swap0/out_data2[16] (swap_BW32)                         0.00       0.63 r
+  butterfly/Hr[0] (BF_BW16)                               0.00       0.63 r
+  butterfly/sub_9/B[0] (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                                          0.00       0.63 r
+  butterfly/sub_9/U4/ZN (INVD1BWP30P140)                  0.02       0.65 f
+  butterfly/sub_9/U1/Z (OR2D1BWP30P140)                   0.02       0.68 f
+  butterfly/sub_9/U2_1/CO (FA1D1BWP30P140)                0.03       0.71 f
+  butterfly/sub_9/U2_2/CO (FA1D1BWP30P140)                0.03       0.74 f
+  butterfly/sub_9/U2_3/CO (FA1D1BWP30P140)                0.03       0.77 f
+  butterfly/sub_9/U2_4/CO (FA1D1BWP30P140)                0.03       0.79 f
+  butterfly/sub_9/U2_5/CO (FA1D1BWP30P140)                0.03       0.82 f
+  butterfly/sub_9/U2_6/CO (FA1D1BWP30P140)                0.03       0.85 f
+  butterfly/sub_9/U2_7/CO (FA1D1BWP30P140)                0.03       0.88 f
+  butterfly/sub_9/U2_8/CO (FA1D1BWP30P140)                0.03       0.91 f
+  butterfly/sub_9/U2_9/CO (FA1D1BWP30P140)                0.03       0.94 f
+  butterfly/sub_9/U2_10/CO (FA1D1BWP30P140)               0.03       0.97 f
+  butterfly/sub_9/U2_11/CO (FA1D1BWP30P140)               0.03       1.00 f
+  butterfly/sub_9/U2_12/CO (FA1D1BWP30P140)               0.03       1.03 f
+  butterfly/sub_9/U2_13/CO (FA1D1BWP30P140)               0.03       1.06 f
+  butterfly/sub_9/U2_14/CO (FA1D1BWP30P140)               0.03       1.09 f
+  butterfly/sub_9/U2_15/CO (FA1D1BWP30P140)               0.03       1.11 f
+  butterfly/sub_9/U2_16/Z (XOR3UD1BWP30P140)              0.04       1.15 f
+  butterfly/sub_9/DIFF[16] (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                                          0.00       1.15 f
+  butterfly/Yr[16] (BF_BW16)                              0.00       1.15 f
+  mult/data_in[33] (MULT_BW34)                            0.00       1.15 f
+  mult/mult_738/B[16] (MULT_BW34_DW02_mult_1)             0.00       1.15 f
+  mult/mult_738/U21/ZN (INVD1BWP30P140)                   0.04       1.19 r
+  mult/mult_738/U293/ZN (NR2D0BWP30P140)                  0.02       1.21 f
+  mult/mult_738/U79/Z (XOR2UD1BWP30P140)                  0.03       1.23 f
+  mult/mult_738/S2_2_14/S (FA1D1BWP30P140)                0.05       1.29 r
+  mult/mult_738/S2_3_13/S (FA1D1BWP30P140)                0.05       1.34 f
+  mult/mult_738/S2_4_12/S (FA1D1BWP30P140)                0.05       1.39 r
+  mult/mult_738/S2_5_11/S (FA1D1BWP30P140)                0.05       1.44 f
+  mult/mult_738/S2_6_10/S (FA1D1BWP30P140)                0.05       1.49 r
+  mult/mult_738/S2_7_9/S (FA1D1BWP30P140)                 0.05       1.54 f
+  mult/mult_738/S2_8_8/S (FA1D1BWP30P140)                 0.05       1.59 r
+  mult/mult_738/S2_9_7/S (FA1D1BWP30P140)                 0.05       1.64 f
+  mult/mult_738/S2_10_6/S (FA1D1BWP30P140)                0.05       1.69 r
+  mult/mult_738/S4_5/S (FA1D1BWP30P140)                   0.05       1.74 f
+  mult/mult_738/S14_16_0/S (FA1D1BWP30P140)               0.05       1.79 r
+  mult/mult_738/FS_1/A[14] (MULT_BW34_DW01_add_2_DW01_add_9)
+                                                          0.00       1.79 r
+  mult/mult_738/FS_1/U58/Z (AN2D0BWP30P140)               0.02       1.81 r
+  mult/mult_738/FS_1/U56/ZN (NR2D0BWP30P140)              0.01       1.82 f
+  mult/mult_738/FS_1/U55/Z (XOR2UD0BWP30P140)             0.03       1.85 f
+  mult/mult_738/FS_1/SUM[14] (MULT_BW34_DW01_add_2_DW01_add_9)
+                                                          0.00       1.85 f
+  mult/mult_738/PRODUCT[16] (MULT_BW34_DW02_mult_1)       0.00       1.85 f
+  mult/add_738/A[16] (MULT_BW34_DW01_add_0_DW01_add_7)
+                                                          0.00       1.85 f
+  mult/add_738/U1_16/CO (FA1D1BWP30P140)                  0.04       1.89 f
+  mult/add_738/U1_17/CO (FA1D1BWP30P140)                  0.03       1.92 f
+  mult/add_738/U1_18/CO (FA1D1BWP30P140)                  0.03       1.95 f
+  mult/add_738/U1_19/CO (FA1D1BWP30P140)                  0.03       1.98 f
+  mult/add_738/U1_20/CO (FA1D1BWP30P140)                  0.03       2.01 f
+  mult/add_738/U1_21/CO (FA1D1BWP30P140)                  0.03       2.03 f
+  mult/add_738/U1_22/CO (FA1D1BWP30P140)                  0.03       2.06 f
+  mult/add_738/U1_23/CO (FA1D1BWP30P140)                  0.03       2.09 f
+  mult/add_738/U1_24/CO (FA1D1BWP30P140)                  0.03       2.12 f
+  mult/add_738/U1_25/CO (FA1D1BWP30P140)                  0.03       2.15 f
+  mult/add_738/U1_26/Z (XOR3UD1BWP30P140)                 0.02       2.17 f
+  mult/add_738/SUM[26] (MULT_BW34_DW01_add_0_DW01_add_7)
+                                                          0.00       2.17 f
+  mult/data_out[16] (MULT_BW34)                           0.00       2.17 f
+  swap1/in_data2[16] (swap_BW34)                          0.00       2.17 f
+  swap1/U128/ZN (INVD1BWP30P140)                          0.01       2.18 r
+  swap1/U32/ZN (OAI22D1BWP30P140)                         0.01       2.19 f
+  swap1/out_data1[16] (swap_BW34)                         0.00       2.19 f
+  U137/ZN (MAOI22D1BWP30P140)                             0.02       2.21 r
+  U138/ZN (INVD1BWP30P140)                                0.07       2.28 f
+  bank0/data_in[15] (simple_dualport_RAM_BW32_0)          0.00       2.28 f
+  bank0/ram_reg[0][15]/D (EDFQD2BWP30P140)                0.00       2.28 f
+  data arrival time                                                  2.28
+
+  clock myCLK (rise edge)                                 5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  bank0/ram_reg[0][15]/CP (EDFQD2BWP30P140)               0.00       5.00 r
+  library setup time                                     -0.04       4.96
+  data required time                                                 4.96
+  --------------------------------------------------------------------------
+  data required time                                                 4.96
+  data arrival time                                                 -2.28
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.68
+
+
+  Startpoint: counter_inst/cnt_reg[4]
+              (rising edge-triggered flip-flop clocked by myCLK)
+  Endpoint: bank0/ram_reg[1][15]
+            (rising edge-triggered flip-flop clocked by myCLK)
+  Path Group: myCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simple_dualport_RAM_BW32_1
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  controlblock       ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  simple_dualport_RAM_BW32_0
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  Inplace_FFT        ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  counter            ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  counter_DW01_inc_0 ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  swap_BW32          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16_DW01_add_1_DW01_add_6
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16_DW01_sub_1_DW01_sub_2
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  BF_BW16            ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW02_mult_3
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW02_mult_1
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW01_add_2_DW01_add_9
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  MULT_BW34_DW01_add_0_DW01_add_7
+                     ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+  swap_BW34          ZeroWireload          tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock myCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_inst/cnt_reg[4]/CP (DFQD2BWP30P140)             0.00 #     0.00 r
+  counter_inst/cnt_reg[4]/Q (DFQD2BWP30P140)              0.06       0.06 f
+  counter_inst/cnt[4] (counter)                           0.00       0.06 f
+  ctr/cnt[4] (controlblock)                               0.00       0.06 f
+  ctr/U18/ZN (XNR3UD1BWP30P140)                           0.05       0.11 f
+  ctr/U17/Z (XOR4D1BWP30P140)                             0.05       0.16 r
+  ctr/U101/ZN (ND3D0BWP30P140)                            0.02       0.18 f
+  ctr/U102/ZN (CKND2D0BWP30P140)                          0.20       0.38 r
+  ctr/swap0_en (controlblock)                             0.00       0.38 r
+  swap0/swap_en (swap_BW32)                               0.00       0.38 r
+  swap0/U1/ZN (INVD1BWP30P140)                            0.19       0.57 f
+  swap0/U37/ZN (OAI22D1BWP30P140)                         0.06       0.63 r
+  swap0/out_data2[16] (swap_BW32)                         0.00       0.63 r
+  butterfly/Hr[0] (BF_BW16)                               0.00       0.63 r
+  butterfly/sub_9/B[0] (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                                          0.00       0.63 r
+  butterfly/sub_9/U4/ZN (INVD1BWP30P140)                  0.02       0.65 f
+  butterfly/sub_9/U1/Z (OR2D1BWP30P140)                   0.02       0.68 f
+  butterfly/sub_9/U2_1/CO (FA1D1BWP30P140)                0.03       0.71 f
+  butterfly/sub_9/U2_2/CO (FA1D1BWP30P140)                0.03       0.74 f
+  butterfly/sub_9/U2_3/CO (FA1D1BWP30P140)                0.03       0.77 f
+  butterfly/sub_9/U2_4/CO (FA1D1BWP30P140)                0.03       0.79 f
+  butterfly/sub_9/U2_5/CO (FA1D1BWP30P140)                0.03       0.82 f
+  butterfly/sub_9/U2_6/CO (FA1D1BWP30P140)                0.03       0.85 f
+  butterfly/sub_9/U2_7/CO (FA1D1BWP30P140)                0.03       0.88 f
+  butterfly/sub_9/U2_8/CO (FA1D1BWP30P140)                0.03       0.91 f
+  butterfly/sub_9/U2_9/CO (FA1D1BWP30P140)                0.03       0.94 f
+  butterfly/sub_9/U2_10/CO (FA1D1BWP30P140)               0.03       0.97 f
+  butterfly/sub_9/U2_11/CO (FA1D1BWP30P140)               0.03       1.00 f
+  butterfly/sub_9/U2_12/CO (FA1D1BWP30P140)               0.03       1.03 f
+  butterfly/sub_9/U2_13/CO (FA1D1BWP30P140)               0.03       1.06 f
+  butterfly/sub_9/U2_14/CO (FA1D1BWP30P140)               0.03       1.09 f
+  butterfly/sub_9/U2_15/CO (FA1D1BWP30P140)               0.03       1.11 f
+  butterfly/sub_9/U2_16/Z (XOR3UD1BWP30P140)              0.04       1.15 f
+  butterfly/sub_9/DIFF[16] (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                                          0.00       1.15 f
+  butterfly/Yr[16] (BF_BW16)                              0.00       1.15 f
+  mult/data_in[33] (MULT_BW34)                            0.00       1.15 f
+  mult/mult_738/B[16] (MULT_BW34_DW02_mult_1)             0.00       1.15 f
+  mult/mult_738/U21/ZN (INVD1BWP30P140)                   0.04       1.19 r
+  mult/mult_738/U293/ZN (NR2D0BWP30P140)                  0.02       1.21 f
+  mult/mult_738/U79/Z (XOR2UD1BWP30P140)                  0.03       1.23 f
+  mult/mult_738/S2_2_14/S (FA1D1BWP30P140)                0.05       1.29 r
+  mult/mult_738/S2_3_13/S (FA1D1BWP30P140)                0.05       1.34 f
+  mult/mult_738/S2_4_12/S (FA1D1BWP30P140)                0.05       1.39 r
+  mult/mult_738/S2_5_11/S (FA1D1BWP30P140)                0.05       1.44 f
+  mult/mult_738/S2_6_10/S (FA1D1BWP30P140)                0.05       1.49 r
+  mult/mult_738/S2_7_9/S (FA1D1BWP30P140)                 0.05       1.54 f
+  mult/mult_738/S2_8_8/S (FA1D1BWP30P140)                 0.05       1.59 r
+  mult/mult_738/S2_9_7/S (FA1D1BWP30P140)                 0.05       1.64 f
+  mult/mult_738/S2_10_6/S (FA1D1BWP30P140)                0.05       1.69 r
+  mult/mult_738/S4_5/S (FA1D1BWP30P140)                   0.05       1.74 f
+  mult/mult_738/S14_16_0/S (FA1D1BWP30P140)               0.05       1.79 r
+  mult/mult_738/FS_1/A[14] (MULT_BW34_DW01_add_2_DW01_add_9)
+                                                          0.00       1.79 r
+  mult/mult_738/FS_1/U58/Z (AN2D0BWP30P140)               0.02       1.81 r
+  mult/mult_738/FS_1/U56/ZN (NR2D0BWP30P140)              0.01       1.82 f
+  mult/mult_738/FS_1/U55/Z (XOR2UD0BWP30P140)             0.03       1.85 f
+  mult/mult_738/FS_1/SUM[14] (MULT_BW34_DW01_add_2_DW01_add_9)
+                                                          0.00       1.85 f
+  mult/mult_738/PRODUCT[16] (MULT_BW34_DW02_mult_1)       0.00       1.85 f
+  mult/add_738/A[16] (MULT_BW34_DW01_add_0_DW01_add_7)
+                                                          0.00       1.85 f
+  mult/add_738/U1_16/CO (FA1D1BWP30P140)                  0.04       1.89 f
+  mult/add_738/U1_17/CO (FA1D1BWP30P140)                  0.03       1.92 f
+  mult/add_738/U1_18/CO (FA1D1BWP30P140)                  0.03       1.95 f
+  mult/add_738/U1_19/CO (FA1D1BWP30P140)                  0.03       1.98 f
+  mult/add_738/U1_20/CO (FA1D1BWP30P140)                  0.03       2.01 f
+  mult/add_738/U1_21/CO (FA1D1BWP30P140)                  0.03       2.03 f
+  mult/add_738/U1_22/CO (FA1D1BWP30P140)                  0.03       2.06 f
+  mult/add_738/U1_23/CO (FA1D1BWP30P140)                  0.03       2.09 f
+  mult/add_738/U1_24/CO (FA1D1BWP30P140)                  0.03       2.12 f
+  mult/add_738/U1_25/CO (FA1D1BWP30P140)                  0.03       2.15 f
+  mult/add_738/U1_26/Z (XOR3UD1BWP30P140)                 0.02       2.17 f
+  mult/add_738/SUM[26] (MULT_BW34_DW01_add_0_DW01_add_7)
+                                                          0.00       2.17 f
+  mult/data_out[16] (MULT_BW34)                           0.00       2.17 f
+  swap1/in_data2[16] (swap_BW34)                          0.00       2.17 f
+  swap1/U128/ZN (INVD1BWP30P140)                          0.01       2.18 r
+  swap1/U32/ZN (OAI22D1BWP30P140)                         0.01       2.19 f
+  swap1/out_data1[16] (swap_BW34)                         0.00       2.19 f
+  U137/ZN (MAOI22D1BWP30P140)                             0.02       2.21 r
+  U138/ZN (INVD1BWP30P140)                                0.07       2.28 f
+  bank0/data_in[15] (simple_dualport_RAM_BW32_0)          0.00       2.28 f
+  bank0/ram_reg[1][15]/D (EDFQD2BWP30P140)                0.00       2.28 f
+  data arrival time                                                  2.28
+
+  clock myCLK (rise edge)                                 5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  bank0/ram_reg[1][15]/CP (EDFQD2BWP30P140)               0.00       5.00 r
+  library setup time                                     -0.04       4.96
+  data required time                                                 4.96
+  --------------------------------------------------------------------------
+  data required time                                                 4.96
+  data arrival time                                                 -2.28
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.68
+
+
+1
+report_power 
+Loading db file '/home/ch/mb_fft/tsmc_28nm_ccs.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:58 2022
+****************************************
+
+
+Library(s) Used:
+
+    tcbn28hpcplusbwp30p140tt0p9v25c_ccs (File: /home/ch/mb_fft/tsmc_28nm_ccs.db)
+
+
+Operating Conditions: tt0p9v25c   Library: tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+Wire Load Model Mode: segmented
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Inplace_FFT            ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+counter                ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+simple_dualport_RAM_BW32_0
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+swap_BW32              ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16                ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34              ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+swap_BW34              ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+controlblock           ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+simple_dualport_RAM_BW32_1
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_sub_0_DW01_sub_1
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_sub_1_DW01_sub_2
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_add_0_DW01_add_5
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_add_1_DW01_add_6
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+counter_DW01_inc_0     ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_0_DW01_add_7
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_0  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_1_DW01_add_8
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_1  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_2_DW01_add_9
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_sub_0_DW01_sub_3
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_2  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_3_DW01_add_10
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_3  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_4_DW01_add_11
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+
+
+Global Operating Voltage = 0.9  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  =   1.5253 mW   (99%)
+  Net Switching Power  =  14.4795 uW    (1%)
+                         ---------
+Total Dynamic Power    =   1.5398 mW  (100%)
+
+Cell Leakage Power     =  45.7755 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register           1.5214        6.2770e-04        3.3339e+04            1.5554  (  98.09%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  3.9244e-03        1.3852e-02        1.2436e+04        3.0212e-02  (   1.91%)
+--------------------------------------------------------------------------------------------------
+Total              1.5253 mW     1.4480e-02 mW     4.5775e+04 nW         1.5856 mW
+1
+report_power -hierarchy 
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:58 2022
+****************************************
+
+
+Library(s) Used:
+
+    tcbn28hpcplusbwp30p140tt0p9v25c_ccs (File: /home/ch/mb_fft/tsmc_28nm_ccs.db)
+
+
+Operating Conditions: tt0p9v25c   Library: tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+Wire Load Model Mode: segmented
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Inplace_FFT            ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+counter                ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+simple_dualport_RAM_BW32_0
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+swap_BW32              ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16                ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34              ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+swap_BW34              ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+controlblock           ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+simple_dualport_RAM_BW32_1
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_sub_0_DW01_sub_1
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_sub_1_DW01_sub_2
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_add_0_DW01_add_5
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+BF_BW16_DW01_add_1_DW01_add_6
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+counter_DW01_inc_0     ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_0_DW01_add_7
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_0  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_1_DW01_add_8
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_1  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_2_DW01_add_9
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_sub_0_DW01_sub_3
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_2  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_3_DW01_add_10
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW02_mult_3  ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+MULT_BW34_DW01_add_4_DW01_add_11
+                       ZeroWireload      tcbn28hpcplusbwp30p140tt0p9v25c_ccs
+
+
+Global Operating Voltage = 0.9  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+Inplace_FFT                            1.45e-02    1.525 4.58e+04    1.586 100.0
+  ctr (controlblock)                   2.56e-04 9.34e-03  418.624 1.00e-02   0.6
+  swap1 (swap_BW34)                       0.000    0.000  142.400 1.42e-04   0.0
+  mult (MULT_BW34)                     3.11e-04 1.50e-02 8.46e+03 2.38e-02   1.5
+    add_738 (MULT_BW34_DW01_add_0_DW01_add_7)
+                                          0.000    0.000  151.818 1.52e-04   0.0
+    mult_738_2 (MULT_BW34_DW02_mult_0) 5.25e-07 7.94e-08 1.84e+03 1.84e-03   0.1
+    mult_738 (MULT_BW34_DW02_mult_1)      0.000    0.000 1.83e+03 1.83e-03   0.1
+    sub_737 (MULT_BW34_DW01_sub_0_DW01_sub_3)
+                                          0.000    0.000  208.496 2.08e-04   0.0
+    mult_737_2 (MULT_BW34_DW02_mult_2)    0.000    0.000 1.83e+03 1.83e-03   0.1
+    mult_737 (MULT_BW34_DW02_mult_3)   5.25e-07 7.94e-08 1.84e+03 1.84e-03   0.1
+  butterfly (BF_BW16)                     0.000    0.000  572.699 5.73e-04   0.0
+    add_7 (BF_BW16_DW01_add_1_DW01_add_6)
+                                          0.000    0.000  139.177 1.39e-04   0.0
+    add_8 (BF_BW16_DW01_add_0_DW01_add_5)
+                                          0.000    0.000  139.177 1.39e-04   0.0
+    sub_9 (BF_BW16_DW01_sub_1_DW01_sub_2)
+                                          0.000    0.000  147.156 1.47e-04   0.0
+    sub_10 (BF_BW16_DW01_sub_0_DW01_sub_1)
+                                          0.000    0.000  147.156 1.47e-04   0.0
+  swap0 (swap_BW32)                       0.000    0.000  134.097 1.34e-04   0.0
+  bank1 (simple_dualport_RAM_BW32_1)   5.64e-04    0.745 1.77e+04    0.764  48.2
+  bank0 (simple_dualport_RAM_BW32_0)   1.04e-03    0.748 1.78e+04    0.766  48.3
+  counter_inst (counter)               7.15e-04 5.62e-03  210.352 6.54e-03   0.4
+    add_11 (counter_DW01_inc_0)        7.04e-05 1.42e-04   88.270 3.01e-04   0.0
+1
+# Write outputs.
+write -f verilog -hier -o ${printModule}_syn.v
+Writing verilog file '/home/ch/mb_fft/mb_fft_syn.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 2 nets to module MULT_BW34_DW02_mult_3 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 2 nets to module MULT_BW34_DW02_mult_2 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 2 nets to module MULT_BW34_DW02_mult_1 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 2 nets to module MULT_BW34_DW02_mult_0 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 28 nets to module MULT_BW34 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 4 nets to module Inplace_FFT using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write_sdc ${printModule}.sdc
+1
+report_qor
+ 
+****************************************
+Report : qor
+Design : Inplace_FFT
+Version: Q-2019.12-SP3
+Date   : Thu Aug  4 16:30:59 2022
+****************************************
+
+
+  Timing Path Group 'myCLK'
+  -----------------------------------
+  Levels of Logic:              56.00
+  Critical Path Length:          2.28
+  Critical Path Slack:           2.68
+  Critical Path Clk Period:      5.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         23
+  Hierarchical Port Count:       1643
+  Leaf Cell Count:               6768
+  Buf/Inv Cell Count:             499
+  Buf Cell Count:                   0
+  Inv Cell Count:                 499
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:      4611
+  Sequential Cell Count:         2157
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:     3644.927967
+  Noncombinational Area:  5680.961805
+  Buf/Inv Area:            125.748002
+  Total Buffer Area:             0.00
+  Total Inverter Area:         125.75
+  Macro/Black Box Area:      0.000000
+  Net Area:                  0.000000
+  -----------------------------------
+  Cell Area:              9325.889772
+  Design Area:            9325.889772
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          7550
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: bitelab-pc
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    2.75
+  Logic Optimization:                  5.91
+  Mapping Optimization:                5.82
+  -----------------------------------------
+  Overall Compile Time:               17.33
+  Overall Compile Wall Clock Time:    17.84
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
+quit
+
+Memory usage for this session 1570 Mbytes.
+Memory usage for this session including child processes 1570 Mbytes.
+CPU usage for this session 41 seconds ( 0.01 hours ).
+Elapsed time for this session 62 seconds ( 0.02 hours ).
+
+Thank you...

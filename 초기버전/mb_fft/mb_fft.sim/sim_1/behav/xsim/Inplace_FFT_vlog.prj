@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../BF.v" \
+"../../../../MULT.v" \
+"../../../../controlblock.v" \
+"../../../../counter.v" \
+"../../../../simple_dualport_RAM.v" \
+"../../../../swap.v" \
+"../../../../Inplace_FFT.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,64 @@
+C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/MULT.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/MULT.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module MULT
+
+Top level modules:
+	MULT
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Inplace_FFT
+
+Top level modules:
+	Inplace_FFT
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/swap.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/swap.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module swap
+
+Top level modules:
+	swap
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/simple_dualport_RAM.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/simple_dualport_RAM.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module simple_dualport_RAM
+
+Top level modules:
+	simple_dualport_RAM
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Inplace_FFT_tb
+
+Top level modules:
+	Inplace_FFT_tb
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/controlblock.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/controlblock.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module controlblock
+
+Top level modules:
+	controlblock
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/counter.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/counter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/BF.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/BF.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module BF
+
+Top level modules:
+	BF
+
+} {} {}} C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb_sin.v {1 {vlog -work work C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb_sin.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Inplace_FFT_tb_sin
+
+Top level modules:
+	Inplace_FFT_tb_sin
+
+} {} {}}

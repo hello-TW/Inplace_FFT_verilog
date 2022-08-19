@@ -1,0 +1,19 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/BF.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BF
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/MULT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MULT
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/controlblock.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module controlblock
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/simple_dualport_RAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simple_dualport_RAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/swap.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module swap
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/Inplace_FFT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Inplace_FFT
+INFO: [VRFC 10-2458] undeclared symbol we_b1, assumed default net type wire [C:/Users/bitelab/Desktop/mb_fft/Inplace_FFT.v:24]
+INFO: [VRFC 10-2458] undeclared symbol re_b1, assumed default net type wire [C:/Users/bitelab/Desktop/mb_fft/Inplace_FFT.v:24]
+INFO: [VRFC 10-2458] undeclared symbol bank_select, assumed default net type wire [C:/Users/bitelab/Desktop/mb_fft/Inplace_FFT.v:33]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/bitelab/Desktop/mb_fft/mb_fft.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

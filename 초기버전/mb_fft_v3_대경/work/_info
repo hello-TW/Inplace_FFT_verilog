@@ -1,0 +1,182 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\KimDaeKyeong\Desktop\BitELab\MB-FFT Verilog\mb_fft_v4_copy
+vBF
+Z1 !s100 05VP@o?J1?O@ke4WYQUmU0
+Z2 I^66CY=C@LSIV0e1hFSRJM0
+Z3 V4l0B[6oK>Y9SkAE`zca@82
+Z4 dC:\Users\KimDaeKyeong\Desktop\mb_fft_v3
+Z5 w1659080673
+Z6 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/BF.v
+Z7 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/BF.v
+L0 1
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/BF.v|
+Z10 o-work work -O0
+n@b@f
+Z11 !s108 1659691132.886000
+Z12 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/BF.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vcontrolblock
+Z13 !s100 @6[L>0ZE3Fb2:kdC_`El71
+Z14 In8Fz>g?JLU_9RC6G6_=^j2
+Z15 V?MlK77NQACRNgZYFg5JE<0
+R4
+Z16 w1659687438
+Z17 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/controlblock.v
+Z18 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/controlblock.v
+L0 1
+R8
+r1
+31
+Z19 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/controlblock.v|
+R10
+Z20 !s108 1659691132.946000
+Z21 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/controlblock.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vcounter
+Z22 !s100 g3n_HRPG;TF8_f=?C4Vd02
+Z23 IBJAPfRPR@ZFC`3HUIc1Od3
+Z24 VRGiA1omk]`DnaJY[^@iZF0
+R4
+Z25 w1659538565
+Z26 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/counter.v
+Z27 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/counter.v
+L0 1
+R8
+r1
+31
+Z28 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/counter.v|
+R10
+Z29 !s108 1659691133.005000
+Z30 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/counter.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vInplace_FFT
+Z31 I7;INGdMaLAh005oOE7gA;3
+Z32 VZ4S7U`B]<>U5TC=0KN:ZG1
+R4
+Z33 w1659691120
+Z34 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT.v
+Z35 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT.v
+L0 1
+R8
+r1
+31
+Z36 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT.v|
+R10
+Z37 n@inplace_@f@f@t
+Z38 !s100 YT>@L@o@[?F?^ch5_=QfW3
+Z39 !s108 1659691133.064000
+Z40 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vInplace_FFT_tb
+Z41 IicPDBkn`]D0I3aWMii2zS2
+Z42 VRiebddDdj[M^`TfFhH16b0
+R4
+Z43 w1659690968
+Z44 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb.v
+Z45 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb.v
+L0 5
+R8
+r1
+31
+Z46 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb.v|
+R10
+Z47 n@inplace_@f@f@t_tb
+Z48 !s100 ojQ5_O:cz>D[cKb3Fl9aP1
+Z49 !s108 1659691133.121000
+Z50 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vInplace_FFT_tb_sin
+Z51 !s100 c]Dmaz78hB[nPoTMI`z9B0
+Z52 IkBIVIJloK@@JdV`@3bJhd3
+Z53 VBDhfFMmH[9oQe<1VC8dAR0
+R4
+Z54 w1659588399
+Z55 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb_sin.v
+Z56 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb_sin.v
+L0 5
+R8
+r1
+31
+Z57 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb_sin.v|
+R10
+Z58 n@inplace_@f@f@t_tb_sin
+Z59 !s108 1659691133.180000
+Z60 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/Inplace_FFT_tb_sin.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vMULT
+Z61 !s100 ^?VOIm0;GnP<>EX0DkF`F0
+Z62 IfEcQfAU=3D@Oc3`JC@z=e3
+Z63 VW:b5jSG4M4DN:OZcz0X6l1
+R4
+Z64 w1659675812
+Z65 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/MULT.v
+Z66 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/MULT.v
+L0 1
+R8
+r1
+31
+Z67 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/MULT.v|
+R10
+Z68 n@m@u@l@t
+Z69 !s108 1659691133.237000
+Z70 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/MULT.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vsimple_dualport_RAM
+Z71 !s100 fg:Jmn=SHWChBolXT[T@b0
+Z72 I`PW=]lXc^>AFd=`FZC<_D3
+Z73 Vz?LPZN<KWV0YlNcHmNP9N3
+R4
+Z74 w1658124559
+Z75 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/simple_dualport_RAM.v
+Z76 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/simple_dualport_RAM.v
+L0 1
+R8
+r1
+31
+Z77 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/simple_dualport_RAM.v|
+R10
+Z78 nsimple_dualport_@r@a@m
+!i10b 1
+!s85 0
+Z79 !s108 1659691133.296000
+Z80 !s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/simple_dualport_RAM.v|
+!s101 -O0
+vswap
+!i10b 1
+Z81 !s100 IEeMTb@gF0eWkJ@[Oz;6i1
+Z82 I40@YzVYXVaZ]3T`B>:e6j0
+Z83 VJclFhcB2XIhoANMYzX52b0
+R4
+R74
+Z84 8C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/swap.v
+Z85 FC:/Users/KimDaeKyeong/Desktop/mb_fft_v3/swap.v
+L0 1
+R8
+r1
+!s85 0
+31
+!s108 1659691133.349000
+!s107 C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/swap.v|
+Z86 !s90 -reportprogress|300|-work|work|C:/Users/KimDaeKyeong/Desktop/mb_fft_v3/swap.v|
+!s101 -O0
+R10

@@ -1,0 +1,4 @@
+Running: xsim.dir/Inplace_FFT_behav/xsimk.exe -simmode gui -wdb Inplace_FFT_behav.wdb -simrunnum 0 -socket 6908
+Design successfully loaded
+Design Loading Memory Usage: 6028 KB (Peak: 6028 KB)
+Design Loading CPU Usage: 46 ms

@@ -1,0 +1,15 @@
+module bit_slice_tb;
+
+    reg  [16:0] data_in;
+    wire [15:0] data_out;
+
+    bit_slice bit_slice(data_in, data_out);
+
+    initial begin
+        data_in = 17'sd34468; #50;
+        
+        data_in = -17'sd34468; #50;
+
+    end
+
+endmodule

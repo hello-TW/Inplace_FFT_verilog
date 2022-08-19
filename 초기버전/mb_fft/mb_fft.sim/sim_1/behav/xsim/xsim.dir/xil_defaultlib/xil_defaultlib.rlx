@@ -1,0 +1,12 @@
+0.6
+2019.1
+May 24 2019
+15:06:07
+C:/Users/bitelab/Desktop/mb_fft/BF.v,1658090760,verilog,,C:/Users/bitelab/Desktop/mb_fft/MULT.v,,BF,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/Inplace_FFT.v,1658123564,verilog,,,,Inplace_FFT,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/MULT.v,1658090760,verilog,,C:/Users/bitelab/Desktop/mb_fft/controlblock.v,,MULT,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/controlblock.v,1658090760,verilog,,C:/Users/bitelab/Desktop/mb_fft/counter.v,,controlblock,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/counter.v,1658090760,verilog,,C:/Users/bitelab/Desktop/mb_fft/simple_dualport_RAM.v,,counter,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/mb_fft.sim/sim_1/behav/xsim/glbl.v,1558713910,verilog,,,,glbl,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/simple_dualport_RAM.v,1658090760,verilog,,C:/Users/bitelab/Desktop/mb_fft/swap.v,,simple_dualport_RAM,,,,,,,,
+C:/Users/bitelab/Desktop/mb_fft/swap.v,1658090760,verilog,,C:/Users/bitelab/Desktop/mb_fft/Inplace_FFT.v,,swap,,,,,,,,

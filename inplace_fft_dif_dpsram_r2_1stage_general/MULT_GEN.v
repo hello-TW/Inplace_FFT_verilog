@@ -93,144 +93,145 @@ module MULT_GEN #(
                     temp_im <= W_im0;
                     end   
 			(START_CNT+1) : begin
-                    temp_re <= W_re3;
-                    temp_im <= W_im3;
-                    end   
-			(START_CNT+2) : begin
-                    temp_re <= W_re5;
-                    temp_im <= W_im5;
-                    end
-			(START_CNT+3) : begin
-                    temp_re <= W_re6;
-                    temp_im <= W_im6;
-                    end
-			(START_CNT+4) : begin
-                    temp_re <= W_re9;
-                    temp_im <= W_im9;
-                    end   
-			(START_CNT+5) : begin
-                    temp_re <= W_re10;
-                    temp_im <= W_im10;
-                    end   
-			(START_CNT+6) : begin
-                    temp_re <= W_re12;
-                    temp_im <= W_im12;
-                    end
-			(START_CNT+7) : begin
-                    temp_re <= W_re15;
-                    temp_im <= W_im15;
-                    end
-			(START_CNT+8) : begin
-                    temp_re <= W_re17;
-                    temp_im <= W_im17;
-                    end   
-			(START_CNT+9) : begin
-                    temp_re <= W_re18;
-                    temp_im <= W_im18;
-                    end   
-			(START_CNT+10) : begin
-                    temp_re <= W_re20;
-                    temp_im <= W_im20;
-                    end
-			(START_CNT+11) : begin
-                    temp_re <= W_re23;
-                    temp_im <= W_im23;
-                    end
-			(START_CNT+12) : begin
-                    temp_re <= W_re24;
-                    temp_im <= W_im24;
-                    end   
-			(START_CNT+13) : begin
-                    temp_re <= W_re27;
-                    temp_im <= W_im27;
-                    end   
-			(START_CNT+14) : begin
-                    temp_re <= W_re29;
-                    temp_im <= W_im29;
-                    end
-			(START_CNT+15) : begin
-                    temp_re <= W_re30;
-                    temp_im <= W_im30;
-                    end
-			(START_CNT+16) : begin
                     temp_re <= W_re1;
                     temp_im <= W_im1;
                     end   
-			(START_CNT+17) : begin
+			(START_CNT+2) : begin
                     temp_re <= W_re2;
                     temp_im <= W_im2;
-                    end   
-			(START_CNT+18) : begin
+                    end
+			(START_CNT+3) : begin
+                    temp_re <= W_re3;
+                    temp_im <= W_im3;
+                    end
+			(START_CNT+4) : begin
                     temp_re <= W_re4;
                     temp_im <= W_im4;
+                    end   
+			(START_CNT+5) : begin
+                    temp_re <= W_re5;
+                    temp_im <= W_im5;
+                    end   
+			(START_CNT+6) : begin
+                    temp_re <= W_re6;
+                    temp_im <= W_im6;
                     end
-			(START_CNT+19) : begin
+			(START_CNT+7) : begin
                     temp_re <= W_re7;
                     temp_im <= W_im7;
                     end
-			(START_CNT+20) : begin
+			(START_CNT+8) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
                     end   
-			(START_CNT+21) : begin
+			(START_CNT+9) : begin
+                    temp_re <= W_re9;
+                    temp_im <= W_im9;
+                    end   
+			(START_CNT+10) : begin
+                    temp_re <= W_re10;
+                    temp_im <= W_im10;
+                    end
+			(START_CNT+11) : begin
                     temp_re <= W_re11;
                     temp_im <= W_im11;
+                    end
+			(START_CNT+12) : begin
+                    temp_re <= W_re12;
+                    temp_im <= W_im12;
                     end   
-			(START_CNT+22) : begin
+			(START_CNT+13) : begin
                     temp_re <= W_re13;
                     temp_im <= W_im13;
-                    end
-			(START_CNT+23) : begin
+                    end   
+			(START_CNT+14) : begin
                     temp_re <= W_re14;
                     temp_im <= W_im14;
                     end
-			(START_CNT+24) : begin
+			(START_CNT+15) : begin
+                    temp_re <= W_re15;
+                    temp_im <= W_im15;
+                    end
+			(START_CNT+16) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
                     end   
-			(START_CNT+25) : begin
+			(START_CNT+17) : begin
+                    temp_re <= W_re17;
+                    temp_im <= W_im17;
+                    end   
+			(START_CNT+18) : begin
+                    temp_re <= W_re18;
+                    temp_im <= W_im18;
+                    end
+			(START_CNT+19) : begin
                     temp_re <= W_re19;
                     temp_im <= W_im19;
+                    end
+			(START_CNT+20) : begin
+                    temp_re <= W_re20;
+                    temp_im <= W_im20;
                     end   
-			(START_CNT+26) : begin
+			(START_CNT+21) : begin
                     temp_re <= W_re21;
                     temp_im <= W_im21;
-                    end
-			(START_CNT+27) : begin
+                    end   
+			(START_CNT+22) : begin
                     temp_re <= W_re22;
                     temp_im <= W_im22;
                     end
-			(START_CNT+28) : begin
+			(START_CNT+23) : begin
+                    temp_re <= W_re23;
+                    temp_im <= W_im23;
+                    end
+			(START_CNT+24) : begin
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
+                    end   
+			(START_CNT+25) : begin
                     temp_re <= W_re25;
                     temp_im <= W_im25;
                     end   
-			(START_CNT+29) : begin
+			(START_CNT+26) : begin
                     temp_re <= W_re26;
                     temp_im <= W_im26;
-                    end   
-			(START_CNT+30) : begin
+                    end
+			(START_CNT+27) : begin
+                    temp_re <= W_re27;
+                    temp_im <= W_im27;
+                    end
+			(START_CNT+28) : begin
                     temp_re <= W_re28;
                     temp_im <= W_im28;
+                    end   
+			(START_CNT+29) : begin
+                    temp_re <= W_re29;
+                    temp_im <= W_im29;
+                    end   
+			(START_CNT+30) : begin
+                    temp_re <= W_re30;
+                    temp_im <= W_im30;
                     end
 			(START_CNT+31) : begin
                     temp_re <= W_re31;
                     temp_im <= W_im31;
                     end
+//stage 2//
 			(START_CNT+32) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
                     end   
 			(START_CNT+33) : begin
-                    temp_re <= W_re6;
-                    temp_im <= W_im6;
+                    temp_re <= W_re2;
+                    temp_im <= W_im2;
                     end   
 			(START_CNT+34) : begin
-                    temp_re <= W_re10;
-                    temp_im <= W_im10;
+                    temp_re <= W_re4;
+                    temp_im <= W_im4;
                     end
 			(START_CNT+35) : begin
-                    temp_re <= W_re12;
-                    temp_im <= W_im12;
+                    temp_re <= W_re6;
+                    temp_im <= W_im6;
                     end
 			(START_CNT+36) : begin
                     temp_re <= W_re18;
@@ -249,40 +250,40 @@ module MULT_GEN #(
                     temp_im <= W_im30;
                     end
 			(START_CNT+40) : begin
-                    temp_re <= W_re2;
-                    temp_im <= W_im2;
+                    temp_re <= W_re31;
+                    temp_im <= W_im31;
                     end   
 			(START_CNT+41) : begin
-                    temp_re <= W_re4;
-                    temp_im <= W_im4;
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
                     end   
 			(START_CNT+42) : begin
-                    temp_re <= W_re8;
-                    temp_im <= W_im8;
-                    end
-			(START_CNT+43) : begin
-                    temp_re <= W_re14;
-                    temp_im <= W_im14;
-                    end
-			(START_CNT+44) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
-                    end   
-			(START_CNT+45) : begin
-                    temp_re <= W_re22;
-                    temp_im <= W_im22;
-                    end   
-			(START_CNT+46) : begin
-                    temp_re <= W_re26;
-                    temp_im <= W_im26;
-                    end
-			(START_CNT+47) : begin
-                    temp_re <= W_re28;
-                    temp_im <= W_im28;
-                    end
-			(START_CNT+48) : begin
                     temp_re <= W_re2;
                     temp_im <= W_im2;
+                    end
+			(START_CNT+43) : begin
+                    temp_re <= W_re4;
+                    temp_im <= W_im4;
+                    end
+			(START_CNT+44) : begin
+                    temp_re <= W_re6;
+                    temp_im <= W_im6;
+                    end   
+			(START_CNT+45) : begin
+                    temp_re <= W_re8;
+                    temp_im <= W_im8;
+                    end   
+			(START_CNT+46) : begin
+                    temp_re <= W_re10;
+                    temp_im <= W_im10;
+                    end
+			(START_CNT+47) : begin
+                    temp_re <= W_re12;
+                    temp_im <= W_im12;
+                    end
+			(START_CNT+48) : begin
+                    temp_re <= W_re14;
+                    temp_im <= W_im14;
                     end   
 			(START_CNT+49) : begin
                     temp_re <= W_re4;
@@ -301,20 +302,20 @@ module MULT_GEN #(
                     temp_im <= W_im16;
                     end   
 			(START_CNT+53) : begin
-                    temp_re <= W_re22;
-                    temp_im <= W_im22;
-                    end   
+                    temp_re <= W_re18;
+                    temp_im <= W_im18;
+                    end  
 			(START_CNT+54) : begin
-                    temp_re <= W_re26;
-                    temp_im <= W_im26;
+                    temp_re <= W_re20;
+                    temp_im <= W_im20;
                     end
 			(START_CNT+55) : begin
-                    temp_re <= W_re28;
-                    temp_im <= W_im28;
+                    temp_re <= W_re22;
+                    temp_im <= W_im22;
                     end
 			(START_CNT+56) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
                     end   
 			(START_CNT+57) : begin
                     temp_re <= W_re6;
@@ -409,112 +410,112 @@ module MULT_GEN #(
                     temp_im <= W_im24;
                     end
 			(START_CNT+80) : begin
-                    temp_re <= W_re4;
-                    temp_im <= W_im4;
-                    end   
-			(START_CNT+81) : begin
-                    temp_re <= W_re8;
-                    temp_im <= W_im8;
-                    end   
-			(START_CNT+82) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
-                    end
-			(START_CNT+83) : begin
-                    temp_re <= W_re28;
-                    temp_im <= W_im28;
-                    end
-			(START_CNT+84) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
                     end   
-			(START_CNT+85) : begin
+			(START_CNT+81) : begin
+                    temp_re <= W_re4;
+                    temp_im <= W_im4;
+                    end   
+			(START_CNT+82) : begin
+                    temp_re <= W_re8;
+                    temp_im <= W_im8;
+                    end
+			(START_CNT+83) : begin
                     temp_re <= W_re12;
                     temp_im <= W_im12;
+                    end
+			(START_CNT+84) : begin
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end   
-			(START_CNT+86) : begin
+			(START_CNT+85) : begin
                     temp_re <= W_re20;
                     temp_im <= W_im20;
-                    end
-			(START_CNT+87) : begin
+                    end   
+			(START_CNT+86) : begin
                     temp_re <= W_re24;
                     temp_im <= W_im24;
+                    end
+			(START_CNT+87) : begin
+                    temp_re <= W_re28;
+                    temp_im <= W_im28;
                     end
 			(START_CNT+88) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
                     end   
 			(START_CNT+89) : begin
-                    temp_re <= W_re12;
-                    temp_im <= W_im12;
-                    end   
-			(START_CNT+90) : begin
-                    temp_re <= W_re20;
-                    temp_im <= W_im20;
-                    end
-			(START_CNT+91) : begin
-                    temp_re <= W_re24;
-                    temp_im <= W_im24;
-                    end
-			(START_CNT+92) : begin
                     temp_re <= W_re4;
                     temp_im <= W_im4;
                     end   
-			(START_CNT+93) : begin
+			(START_CNT+90) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
-                    end   
-			(START_CNT+94) : begin
+                    end
+			(START_CNT+91) : begin
+                    temp_re <= W_re12;
+                    temp_im <= W_im12;
+                    end
+			(START_CNT+92) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
+                    end   
+			(START_CNT+93) : begin
+                    temp_re <= W_re20;
+                    temp_im <= W_im20;
+                    end   
+			(START_CNT+94) : begin
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
                     end
 			(START_CNT+95) : begin
                     temp_re <= W_re28;
                     temp_im <= W_im28;
                     end 
-			(START_CNT+96) : begin
+			(START_CNT+96) : begin  //stage4
                     temp_re <= W_re0;
                     temp_im <= W_im0;
                     end   
 			(START_CNT+97) : begin
-                    temp_re <= W_re24;
-                    temp_im <= W_im24;
+                    temp_re <= W_re8;
+                    temp_im <= W_im8;
                     end   
 			(START_CNT+98) : begin
-                    temp_re <= W_re8;
-                    temp_im <= W_im8;
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end
 			(START_CNT+99) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
                     end
 			(START_CNT+100) : begin
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
+                    end   
+			(START_CNT+101) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
                     end   
-			(START_CNT+101) : begin
+			(START_CNT+102) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+102) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
                     end
 			(START_CNT+103) : begin
                     temp_re <= W_re24;
                     temp_im <= W_im24;
                     end
 			(START_CNT+104) : begin
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
+                    end   
+			(START_CNT+105) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
                     end   
-			(START_CNT+105) : begin
+			(START_CNT+106) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+106) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
                     end
 			(START_CNT+107) : begin
                     temp_re <= W_re24;
@@ -525,28 +526,28 @@ module MULT_GEN #(
                     temp_im <= W_im0;
                     end   
 			(START_CNT+109) : begin
-                    temp_re <= W_re24;
-                    temp_im <= W_im24;
+                    temp_re <= W_re8;
+                    temp_im <= W_im8;
                     end   
 			(START_CNT+110) : begin
-                    temp_re <= W_re8;
-                    temp_im <= W_im8;
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end
 			(START_CNT+111) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
                     end
 			(START_CNT+112) : begin
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
+                    end   
+			(START_CNT+113) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
                     end   
-			(START_CNT+113) : begin
+			(START_CNT+114) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+114) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
                     end
 			(START_CNT+115) : begin
                     temp_re <= W_re24;
@@ -557,50 +558,50 @@ module MULT_GEN #(
                     temp_im <= W_im0;
                     end   
 			(START_CNT+117) : begin
-                    temp_re <= W_re24;
-                    temp_im <= W_im24;
-                    end   
-			(START_CNT+118) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
-                    end
-			(START_CNT+119) : begin
+                    end   
+			(START_CNT+118) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
+                    end
+			(START_CNT+119) : begin
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
                     end
 			(START_CNT+120) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
                     end   
 			(START_CNT+121) : begin
-                    temp_re <= W_re24;
-                    temp_im <= W_im24;
+                    temp_re <= W_re8;
+                    temp_im <= W_im8;
                     end   
 			(START_CNT+122) : begin
-                    temp_re <= W_re8;
-                    temp_im <= W_im8;
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end
 			(START_CNT+123) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
+                    temp_re <= W_re24;
+                    temp_im <= W_im24;
                     end
 			(START_CNT+124) : begin
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
+                    end   
+			(START_CNT+125) : begin
                     temp_re <= W_re8;
                     temp_im <= W_im8;
                     end   
-			(START_CNT+125) : begin
+			(START_CNT+126) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+126) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
                     end
 			(START_CNT+127) : begin
                     temp_re <= W_re24;
                     temp_im <= W_im24;
                     end 
-			(START_CNT+128) : begin
+			(START_CNT+128) : begin //stage5
                     temp_re <= W_re0;
                     temp_im <= W_im0;
                     end   
@@ -609,20 +610,20 @@ module MULT_GEN #(
                     temp_im <= W_im16;
                     end   
 			(START_CNT+130) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
                     end
 			(START_CNT+131) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
-                    end
-			(START_CNT+132) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+133) : begin
+                    end
+			(START_CNT+132) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
+                    end   
+			(START_CNT+133) : begin
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end   
 			(START_CNT+134) : begin
                     temp_re <= W_re0;
@@ -633,12 +634,12 @@ module MULT_GEN #(
                     temp_im <= W_im16;
                     end
 			(START_CNT+136) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
-                    end   
-			(START_CNT+137) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
+                    end   
+			(START_CNT+137) : begin
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end   
 			(START_CNT+138) : begin
                     temp_re <= W_re0;
@@ -657,20 +658,20 @@ module MULT_GEN #(
                     temp_im <= W_im16;
                     end   
 			(START_CNT+142) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
                     end
 			(START_CNT+143) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
-                    end
-			(START_CNT+144) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+145) : begin
+                    end
+			(START_CNT+144) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
+                    end   
+			(START_CNT+145) : begin
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end   
 			(START_CNT+146) : begin
                     temp_re <= W_re0;
@@ -689,12 +690,12 @@ module MULT_GEN #(
                     temp_im <= W_im16;
                     end   
 			(START_CNT+150) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
-                    end
-			(START_CNT+151) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
+                    end
+			(START_CNT+151) : begin
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end
 			(START_CNT+152) : begin
                     temp_re <= W_re0;
@@ -705,20 +706,20 @@ module MULT_GEN #(
                     temp_im <= W_im16;
                     end   
 			(START_CNT+154) : begin
-                    temp_re <= W_re16;
-                    temp_im <= W_im16;
+                    temp_re <= W_re0;
+                    temp_im <= W_im0;
                     end
 			(START_CNT+155) : begin
-                    temp_re <= W_re0;
-                    temp_im <= W_im0;
-                    end
-			(START_CNT+156) : begin
                     temp_re <= W_re16;
                     temp_im <= W_im16;
-                    end   
-			(START_CNT+157) : begin
+                    end
+			(START_CNT+156) : begin
                     temp_re <= W_re0;
                     temp_im <= W_im0;
+                    end   
+			(START_CNT+157) : begin
+                    temp_re <= W_re16;
+                    temp_im <= W_im16;
                     end   
 			(START_CNT+158) : begin
                     temp_re <= W_re0;

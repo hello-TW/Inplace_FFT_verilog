@@ -9,6 +9,8 @@ always @(posedge clk) begin
         cnt <= 8'b11111111;   // == 63 in decade
     else if (start && valid)
         cnt <= cnt + 1;
+        if(cnt == 225)
+            cnt = 8'd0;
     else
         cnt <= cnt;
 end

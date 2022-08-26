@@ -7,8 +7,12 @@ module counter
 always @(posedge clk) begin
     if(!nrst)
         cnt <= 8'b11111111;   // == 63 in decade
-    else if (start && valid)
-        cnt <= cnt + 1;
+    else if (start && valid) begin
+        if(cnt == 225)
+            cnt <= 8'd0;
+        else
+	        cnt <= cnt + 1;
+    end
     else
         cnt <= cnt;
 end

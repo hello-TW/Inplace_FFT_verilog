@@ -173,7 +173,7 @@ module controlblock (
                 we_b1_temp = 1'b1;
                 re_b0_temp = 1'b1;
                 re_b1_temp = 1'b1;
-                ref_addr   = cnt_temp[4:0];
+                ref_addr   = {cnt_temp[0],cnt_temp[1],cnt_temp[2],cnt_temp[3],cnt_temp[4]};
                 waddr_b0_temp = raddr_b0_reg;
                 waddr_b1_temp = raddr_b1_reg;
                 raddr_b0_temp = ref_addr;

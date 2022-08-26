@@ -7,8 +7,8 @@ module controlblock (
 );
 
     //temporary variables
-    wire bank_select_temp, bank_select_temp32, bank_select_stage6, bank_select_delay1;
-	wire [7:0] cnt_stage6, cnt_temp, cnt_temp_delay1;
+    wire bank_select_temp, bank_select_temp32;
+	wire [7:0] cnt_temp;
     reg input_done_temp, output_start_temp, swap0_en_temp, swap1_en_temp;
     reg we_b0_temp, re_b0_temp, we_b1_temp, re_b1_temp;
     reg re_b0_reg, re_b1_reg;
@@ -18,70 +18,53 @@ module controlblock (
     reg output_start_reg, swap0_en_reg, swap1_en_reg;
     reg [2:0] state;
     reg [4:0] raddr_b0_reg, raddr_b1_reg;
-    reg signed [4:0] increment;
 
     //FSM states
-    parameter inout_state  = 3'd0;
-    parameter input_state  = 3'd1;
+    parameter input_state  = 3'd0;
+    parameter stage1_1_state = 3'd1;
     parameter stage1_state = 3'd2;
     parameter stage2_state = 3'd3;
     parameter stage3_state = 3'd4;
     parameter stage4_state = 3'd5;
     parameter stage5_state = 3'd6;
     parameter stage6_state = 3'd7;
-
     //counter instantiation
     counter counter(nrst, clk, start, valid, cnt_temp);
 
-//state change
-always @(posedge clk) begin
-    if(nrst == 0)
-        state = inout_state;
-    else begin
-        if (cnt_temp == 30)
+    //state change
+    always @(posedge clk) begin
+        if(nrst == 0)
             state = input_state;
-        else if (cnt_temp == 63) 
-            state = stage1_state;
-        else if (cnt_temp == 95)
-            state = stage2_state;
-        else if (cnt_temp == 127)
-            state = stage3_state;
-        else if (cnt_temp == 159)
-            state = stage4_state;
-        else if (cnt_temp == 191)
-            state = stage5_state;
-        else if (cnt_temp == 223)
-            state = stage6_state;
-        else if (cnt_temp == 224)
-            state = inout_state;
-        else
-            state = state;
+        else begin
+            if (cnt_temp == 63) 
+                state = stage1_1_state;
+            else if (cnt_temp == 64)
+                state = stage1_state;
+            else if (cnt_temp == 95)
+                state = stage2_state;
+            else if (cnt_temp == 127)
+                state = stage3_state;
+            else if (cnt_temp == 159)
+                state = stage4_state;
+            else if (cnt_temp == 191)
+                state = stage5_state;
+            else if (cnt_temp == 223)
+                state = stage6_state;
+            else if (cnt_temp == 255)
+                state = input_state;
+            else
+                state = state;
+        end
     end
-end
 
     //output
-    always @(state, cnt_temp, bank_select_temp, bank_select_stage6, bank_select_temp32) begin
+    always @(state, cnt_temp, bank_select_temp, bank_select_temp32) begin
         case(state)
-            inout_state : begin
-                input_done_temp = 1'b0;
-                output_start_temp = 1'b1;
-                swap0_en_temp = bank_select_stage6;
-                swap1_en_temp = 1'b0;
-                we_b0_temp = ~bank_select_temp;
-                we_b1_temp = bank_select_temp;
-                re_b0_temp = 1'b1;
-                re_b1_temp = 1'b1;
-                waddr_b0_temp = cnt_temp>>1;
-                waddr_b1_temp = cnt_temp>>1;
-                raddr_b0_temp = cnt_temp[4:0]+1;
-                raddr_b1_temp = cnt_temp[4:0]+1;
-            end
             input_state : begin
                 input_done_temp = 1'b0;
                 output_start_temp = 1'b0;
                 swap0_en_temp = 1'b0;
                 swap1_en_temp = 1'b0;
-                increment = 1'b0;
                 we_b0_temp = ~bank_select_temp;
                 we_b1_temp = bank_select_temp;
                 re_b0_temp = 1'b0;
@@ -90,6 +73,21 @@ end
                 waddr_b1_temp = cnt_temp>>1;
                 raddr_b0_temp = 5'd0;
                 raddr_b1_temp = 5'd0;
+            end
+            stage1_1_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 1'b0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b0;
+                we_b1_temp = 1'b0;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                ref_addr   = {1'b0,cnt_temp[4:1]};
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd16 : 5'd0);
+                raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0  : 5'd16);
             end
             stage1_state : begin
                 input_done_temp = 1'b1;
@@ -170,7 +168,7 @@ end
                 input_done_temp = 1'b1;
                 output_start_temp = 1'b1;
                 swap0_en_temp = bank_select_temp32;
-                swap1_en_temp = bank_select_temp32;
+                swap1_en_temp = 1'b0;
                 we_b0_temp = 1'b1;
                 we_b1_temp = 1'b1;
                 re_b0_temp = 1'b1;
@@ -196,11 +194,9 @@ end
             output_start_reg <= output_start_temp;
         end
     end
-    assign cnt_stage6 = cnt_temp + 1;
 
     assign bank_select_temp = (cnt_temp[5]^cnt_temp[4])^((cnt_temp[3]^cnt_temp[2])^(cnt_temp[1]^cnt_temp[0]));
     assign bank_select_temp32 = (cnt_temp[4])^((cnt_temp[3]^cnt_temp[2])^(cnt_temp[1]^cnt_temp[0]));
-    assign bank_select_stage6 = (cnt_stage6[4])^((cnt_stage6[3]^cnt_stage6[2])^(cnt_stage6[1]^cnt_stage6[0]));
 
 //assign port
 assign input_done = input_done_temp;

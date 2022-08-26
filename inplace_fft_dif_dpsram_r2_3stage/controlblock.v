@@ -11,14 +11,14 @@ module controlblock (
 	wire [7:0] cnt_temp;
     reg input_done_temp, output_start_temp, swap0_en_temp, swap1_en_temp;
     reg we_b0_temp, re_b0_temp, we_b1_temp, re_b1_temp;
-	reg [5:0] waddr_b0_temp, waddr_b1_temp, raddr_b0_temp, raddr_b1_temp;
+	reg [4:0] waddr_b0_temp, waddr_b1_temp, raddr_b0_temp, raddr_b1_temp;
 
     //register
     reg output_start_reg[2:0], swap0_en_reg, swap1_en_reg[2:0];
     reg re_b0_reg[2:0], re_b1_reg[2:0];
     reg [2:0] state;
-    reg [5:0] raddr_b0_reg[2:0], raddr_b1_reg[2:0];
-    reg signed [5:0] increment;
+    reg [4:0] raddr_b0_reg[2:0], raddr_b1_reg[2:0];
+    reg signed [4:0] increment;
 
     //FSM states
     parameter input_state  = 3'd0;

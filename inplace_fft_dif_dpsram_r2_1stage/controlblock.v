@@ -11,13 +11,13 @@ module controlblock (
 	wire [7:0] cnt_temp;
     reg input_done_temp, output_start_temp, swap0_en_temp, swap1_en_temp;
     reg we_b0_temp, re_b0_temp, we_b1_temp, re_b1_temp;
-	reg [5:0] waddr_b0_temp, waddr_b1_temp, raddr_b0_temp, raddr_b1_temp;
+	reg [4:0] waddr_b0_temp, waddr_b1_temp, raddr_b0_temp, raddr_b1_temp;
     
     //register
     reg output_start_reg, swap0_en_reg, swap1_en_reg;
-    reg [5:0] raddr_b0_reg, raddr_b1_reg;
+    reg [4:0] raddr_b0_reg, raddr_b1_reg;
     reg [2:0] state;
-    reg signed [5:0] increment;
+    reg signed [4:0] increment;
 
     //FSM states
     parameter input_state  = 3'd0;
@@ -32,31 +32,31 @@ module controlblock (
     //counter instantiation
     counter counter(nrst, clk, start, valid, cnt_temp);
 
-//state change
-always @(posedge clk) begin
-    if(nrst == 0)
-        state = input_state;
-    else begin
-        if (cnt_temp == 63) 
-            state = stage1_1_state;
-        else if (cnt_temp == 64)
-            state = stage1_state;
-        else if (cnt_temp == 95)
-            state = stage2_state;
-        else if (cnt_temp == 127)
-            state = stage3_state;
-        else if (cnt_temp == 159)
-            state = stage4_state;
-        else if (cnt_temp == 191)
-            state = stage5_state;
-        else if (cnt_temp == 223)
-            state = stage6_state;
-        else if (cnt_temp == 255)
+    //state change
+    always @(posedge clk) begin
+        if(nrst == 0)
             state = input_state;
-        else
-            state = state;
+        else begin
+            if (cnt_temp == 63) 
+                state = stage1_1_state;
+            else if (cnt_temp == 64)
+                state = stage1_state;
+            else if (cnt_temp == 95)
+                state = stage2_state;
+            else if (cnt_temp == 127)
+                state = stage3_state;
+            else if (cnt_temp == 159)
+                state = stage4_state;
+            else if (cnt_temp == 191)
+                state = stage5_state;
+            else if (cnt_temp == 223)
+                state = stage6_state;
+            else if (cnt_temp == 255)
+                state = input_state;
+            else
+                state = state;
+        end
     end
-end
 
     //output
     always @(state, cnt_temp, raddr_b0_reg, raddr_b1_reg, bank_select_temp, bank_select_stage6) begin

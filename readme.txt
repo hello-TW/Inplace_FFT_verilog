@@ -8,11 +8,30 @@ inplace fft의 verilog 코드모음
         * point     : 64 pt
         * memory    : dual-port SRAM
         * Radix     : radix-2
-        * addressing: vertex coloring
+        * addressing: vertex coloring, bank0 addressing
         * ping-pong : no
         * pipeline  : 1 stage
-        * latency   : 225
 
+    -inplace_fft_dif_dpsram_r2_1stage_sfg_addressing
+        * fft       : Inplace FFT
+        * algorithm : DIF
+        * point     : 64 pt
+        * memory    : dual-port SRAM
+        * Radix     : radix-2
+        * addressing: vertex coloring, sfg addressing
+        * ping-pong : no
+        * pipeline  : 1 stage
+
+    - inplace_fft_dif_dpsram_r2_1stage_sfg_addressing_reorder
+        * fft       : Inplace FFT
+        * algorithm : DIF
+        * point     : 64 pt
+        * memory    : dual-port SRAM
+        * Radix     : radix-2
+        * addressing: vertex coloring, sfg addressing
+        * ping-pong : no
+        * pipeline  : 1 stage
+        * reorder   : 작업중
 
     -inplace_fft_dif_dpsram_r2_2stage
         * fft       : Inplace FFT
@@ -20,10 +39,9 @@ inplace fft의 verilog 코드모음
         * point     : 64 pt
         * memory    : dual-port SRAM
         * Radix     : radix-2
-        * addressing: vertex coloring
+        * addressing: vertex coloring, bank0 addressing
         * ping-pong : no
         * pipeline  : 2 stage
-        * latency   : 226
 
 
     -inplace_fft_dif_dpsram_r2_3stage
@@ -32,10 +50,9 @@ inplace fft의 verilog 코드모음
         * point     : 64 pt
         * memory    : dual-port SRAM
         * Radix     : radix-2
-        * addressing: vertex coloring
+        * addressing: vertex coloring, bank0 addressing
         * ping-pong : no
         * pipeline  : 3 stage
-        * latency   : 227
 
     -inplace_fft_dif_dpsram_uhd_r2_1stage(tsmc)
         * fft       : Inplace FFT
@@ -43,24 +60,31 @@ inplace fft의 verilog 코드모음
         * point     : 64 pt
         * memory    : dual-port ultra high density  SRAM (tsmc)
         * Radix     : radix-2
-        * addressing: vertex coloring
+        * addressing: vertex coloring, bank0 addressing
         * ping-pong : no
         * pipeline  : 1 stage
-        * latency   : 225
+
+    - inplace_fft_dit_dpsram_r2_1stage_sfg_addressing(작업중)
+        * fft       : Inplace FFT
+        * algorithm : DIT
+        * point     : 64 pt
+        * memory    : dual-port SRAM
+        * Radix     : radix-2
+        * addressing: vertex coloring, sfg addressing
+        * ping-pong : no
+        * pipeline  : 1 stage
 
     -이전버전 : 이전의 verilog코드 모음 구조와 알고리즘은 "inplace_fft_dif_dpsram_r2_1stage"와 동일
         -mb_fft                                     : 출력이 제대로 나오지 않는 초기 버전
         -mb_fft_v2(no_input_reg)                    : 입력 register를 지우고 control 수정
         -mb_fft_v3                                  : control block을 FSM으로 설계
         -mb_fft_v3_sat                              : overflow로 인한 손해를 없애기 위해 saturation으로 처리
-        -mb_fft_v4(signed_error_cleard)             : dc에 합성할때 signed error를 해결한 버전
-        
-        -inplace_fft_dif_dpsram_r2_1stage_temp      : 255까지 count하는 버전 이버전이후 출력이 나옴
-        -inplace_fft_dif_dpsram_r2_1stage_compact   : cnt를 줄인 버전
+        -mb_fft_v4(signed_error_cleard)             : dc에 합성할 때 signed error를 해결한 버전
+        -inplace_fft_dif_dpsram_r2_1stage_temp      : 255까지 count하는 버전 이 버전 이후 출력이 나옴
 
         
     과정
-        mb_fft -> mb_fft_v2 -> mb_fft_v3         -> mb_fft_v4 -> inplace_fft_dif_dpsram_r2_1stage_temp -> inplace_fft_dif_dpsram_r2_1stage_compact
+        mb_fft -> mb_fft_v2 -> mb_fft_v3         -> mb_fft_v4 -> inplace_fft_dif_dpsram_r2_1stage_temp -> inplace_fft_dif_dpsram_r2_1stage
                             -> mb_fft_v3_sat (x)
 
 #파일
@@ -72,7 +96,7 @@ inplace fft의 verilog 코드모음
                 ├─controlblock           : control 신호를 생성하는 block
                 │    └─counter           : control 신호를 생성하기위해 count하는 block
                 ├─BF                     : butterfly block
-                ├─MULT_GEN               : cnt값에따하 twiddle factor를 곱하는 block
+                ├─MULT_GEN               : cnt값에 따라 twiddle factor를 곱하는 block
                 └─SWAP                   : enable이 high일 때 입력의 순서를 바꾸는 block
 
     inplace_fft_dif_dpsram_r2_2stage,  inplace_fft_dif_dpsram_r2_3stage
@@ -82,6 +106,6 @@ inplace fft의 verilog 코드모음
                 ├─controlblock           : control 신호를 생성하는 block
                 │    └─counter           : control 신호를 생성하기위해 count하는 block
                 ├─BF                     : butterfly block
-                ├─MULT_GEN               : cnt값에따하 twiddle factor를 곱하는 block
+                ├─MULT_GEN               : cnt값에 따라 twiddle factor를 곱하는 block
                 ├─SWAP                   : enable이 high일 때 입력의 순서를 바꾸는 block
                 └─pipelien_reg           : pipeline을 삽입하기위한 register block

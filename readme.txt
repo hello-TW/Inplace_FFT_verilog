@@ -75,11 +75,11 @@ inplace fft의 verilog 코드모음
         * pipeline  : 1 stage
 
     -이전버전 : 이전의 verilog코드 모음 구조와 알고리즘은 "inplace_fft_dif_dpsram_r2_1stage"와 동일
-        -mb_fft                                     : 출력이 제대로 나오지 않는 초기 버전
-        -mb_fft_v2(no_input_reg)                    : 입력 register를 지우고 control 수정
-        -mb_fft_v3                                  : control block을 FSM으로 설계
-        -mb_fft_v3_sat                              : overflow로 인한 손해를 없애기 위해 saturation으로 처리
-        -mb_fft_v4(signed_error_cleard)             : dc에 합성할 때 signed error를 해결한 버전
+        -mb_fft                                     	: 출력이 제대로 나오지 않는 초기 버전
+        -mb_fft_v2(no_input_reg)                	: 입력 register를 지우고 control 수정
+        -mb_fft_v3                                  	: control block을 FSM으로 설계
+        -mb_fft_v3_sat                              	: overflow로 인한 손해를 없애기 위해 saturation으로 처리
+        -mb_fft_v4(signed_error_cleard)             	: dc에 합성할 때 signed error를 해결한 버전
         -inplace_fft_dif_dpsram_r2_1stage_temp      : 255까지 count하는 버전 이 버전 이후 출력이 나옴
 
         

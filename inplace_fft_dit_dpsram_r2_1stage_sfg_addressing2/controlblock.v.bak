@@ -71,9 +71,9 @@ end
                 we_b1_temp = bank_select_temp;
                 re_b0_temp = 1'b0;
                 re_b1_temp = 1'b0;
-                ref_addr   = 5'd0;
-                waddr_b0_temp = {cnt_temp[0],cnt_temp[1],cnt_temp[2],cnt_temp[3],cnt_temp[4]};
-                waddr_b1_temp = {cnt_temp[0],cnt_temp[1],cnt_temp[2],cnt_temp[3],cnt_temp[4]};
+                ref_addr   = 5'd0
+                waddr_b0_temp = cnt_temp[0:5];
+                waddr_b1_temp = cnt_temp[0:5];
                 raddr_b0_temp = ref_addr;
                 raddr_b1_temp = ref_addr;
             end
@@ -122,58 +122,58 @@ end
                 raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd1 : 5'd0);
                 raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd1);                
             end
-stage3_state : begin
-    input_done_temp = 1'b1;
-    output_start_temp = 0;
-    swap0_en_temp = bank_select_temp32;
-    swap1_en_temp = bank_select_temp32;
-    we_b0_temp = 1'b1;
-    we_b1_temp = 1'b1;
-    re_b0_temp = 1'b1;
-    re_b1_temp = 1'b1;
-    ref_addr   = {cnt_temp[4:2], 1'b0, cnt_temp[1]};
-    waddr_b0_temp = raddr_b0_reg;
-    waddr_b1_temp = raddr_b1_reg;
-    raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd2 : 5'd0);
-    raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd2);
-end
-stage4_state : begin
-    input_done_temp = 1'b1;
-    output_start_temp = 0;
-    swap0_en_temp = bank_select_temp32;
-    swap1_en_temp = bank_select_temp32;
-    we_b0_temp = 1'b1;
-    we_b1_temp = 1'b1;
-    re_b0_temp = 1'b1;
-    re_b1_temp = 1'b1;
-    ref_addr   = {cnt_temp[4:3],1'b0,cnt_temp[2:1]};
-    waddr_b0_temp = raddr_b0_reg;
-    waddr_b1_temp = raddr_b1_reg;
-    raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd4 : 5'd0);
-    raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd4);                
-end
-stage5_state : begin
-    input_done_temp = 1'b1;
-    output_start_temp = 1'b0;
-    swap0_en_temp = bank_select_temp32;
-    swap1_en_temp = bank_select_temp32;
-    we_b0_temp = 1'b1;
-    we_b1_temp = 1'b1;
-    re_b0_temp = 1'b1;
-    re_b1_temp = 1'b1;
-    ref_addr   = {cnt_temp[4],1'b0,cnt_temp[3:1]};
-    waddr_b0_temp = raddr_b0_reg;
-    waddr_b1_temp = raddr_b1_reg;
-    raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd8 : 5'd0);
-    raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd8);
-end
+            stage3_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b1;
+                we_b1_temp = 1'b1;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                ref_addr   = {cnt_temp[4:2], 1'b0, cnt_temp[1]};
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd2 : 5'd0);
+                raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd2);
+            end
+            stage4_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b1;
+                we_b1_temp = 1'b1;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                ref_addr   = {cnt_temp[4:3],1'b0,cnt_temp[2:1]};
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd4 : 5'd0);
+                raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd4);                
+            end
+            stage5_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 1'b0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b1;
+                we_b1_temp = 1'b1;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                ref_addr   = {cnt_temp[4],1'b0,cnt_temp[3:1]};
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd8 : 5'd0);
+                raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd8);
+            end
             default : begin //stage6_stage             
                 input_done_temp = 1'b1;
                 output_start_temp = 1'b1;
                 swap0_en_temp = bank_select_temp32;
                 swap1_en_temp = bank_select_temp32;
-                we_b0_temp = 1'b0;
-                we_b1_temp = 1'b0;
+                we_b0_temp = re_b0_reg;
+                we_b1_temp = re_b0_reg;
                 re_b0_temp = 1'b1;
                 re_b1_temp = 1'b1;
                 ref_addr   = {1'b0,cnt_temp[4:1]};
@@ -188,6 +188,8 @@ end
     //register
     always @(posedge clk) begin
         if(valid) begin
+            re_b0_reg <= re_b0_temp;
+            re_b1_reg <= re_b1_temp;
             swap0_en_reg <= swap0_en_temp;
             swap1_en_reg <= swap1_en_temp;
             raddr_b0_reg <= raddr_b0_temp;

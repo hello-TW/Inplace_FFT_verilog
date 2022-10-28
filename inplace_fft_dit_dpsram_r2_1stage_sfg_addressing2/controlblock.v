@@ -7,13 +7,15 @@ module controlblock (
 );
 
     //temporary variables
-    wire bank_select_temp, bank_select_temp32, bank_select_stage6, bank_select_delay1;
+    wire bank_select_temp, bank_select_temp32, bank_select_stage6, bank_select_delay1, bank_select_AGU;
 	wire [7:0] cnt_stage6, cnt_temp, cnt_temp_delay1;
     reg input_done_temp, output_start_temp, swap0_en_temp, swap1_en_temp;
     reg we_b0_temp, re_b0_temp, we_b1_temp, re_b1_temp;
     reg re_b0_reg, re_b1_reg;
-	reg [4:0] waddr_b0_temp, waddr_b1_temp, raddr_b0_temp, raddr_b1_temp, ref_addr;
+	reg [4:0] waddr_b0_temp, waddr_b1_temp, raddr_b0_temp, raddr_b1_temp;
     
+    reg [5:0] AGU0, AGU1;
+
     //register
     reg output_start_reg, swap0_en_reg, swap1_en_reg;
     reg [2:0] state;
@@ -60,7 +62,7 @@ always @(posedge clk) begin
 end
 
     //output
-    always @(state, cnt_temp, bank_select_temp, bank_select_stage6, bank_select_temp32) begin
+    always @(state, cnt_temp, bank_select_temp, bank_select_stage6, bank_select_temp32, bank_select_AGU) begin
         case(state)
             input_state : begin
                 input_done_temp = 1'b0;
@@ -71,11 +73,12 @@ end
                 we_b1_temp = bank_select_temp;
                 re_b0_temp = 1'b0;
                 re_b1_temp = 1'b0;
-                ref_addr   = 5'd0;
+                AGU0   = 6'd0;
+                AGU1   = AGU0;
                 waddr_b0_temp = {cnt_temp[0],cnt_temp[1],cnt_temp[2],cnt_temp[3],cnt_temp[4]};
                 waddr_b1_temp = {cnt_temp[0],cnt_temp[1],cnt_temp[2],cnt_temp[3],cnt_temp[4]};
-                raddr_b0_temp = ref_addr;
-                raddr_b1_temp = ref_addr;
+                raddr_b0_temp = AGU0;
+                raddr_b1_temp = AGU1;
             end
             stage1_1_state : begin
                 input_done_temp = 1'b1;
@@ -86,11 +89,12 @@ end
                 we_b1_temp = 1'b0;
                 re_b0_temp = 1'b1;
                 re_b1_temp = 1'b1;
-                ref_addr   = cnt_temp[4:0];
+                AGU0   = {cnt_temp[4:0], 1'b0};
+                AGU1   = AGU0 + 1;
                 waddr_b0_temp = raddr_b0_reg;
                 waddr_b1_temp = raddr_b1_reg;
-                raddr_b0_temp = ref_addr;
-                raddr_b1_temp = ref_addr;
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1];
             end
             stage1_state : begin
                 input_done_temp = 1'b1;
@@ -101,11 +105,12 @@ end
                 we_b1_temp = 1'b1;
                 re_b0_temp = 1'b1;
                 re_b1_temp = 1'b1;
-                ref_addr   = cnt_temp[4:0];
+                AGU0   = {cnt_temp[4:0], 1'b0};
+                AGU1   = AGU0 + 1;
                 waddr_b0_temp = raddr_b0_reg;
                 waddr_b1_temp = raddr_b1_reg;
-                raddr_b0_temp = ref_addr;
-                raddr_b1_temp = ref_addr;
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1];
             end
             stage2_state : begin
                 input_done_temp = 1'b1;
@@ -116,71 +121,76 @@ end
                 we_b1_temp = 1'b1;
                 re_b0_temp = 1'b1;
                 re_b1_temp = 1'b1;
-                ref_addr   = {cnt_temp[4:1],1'b0};
+                AGU0   = {cnt_temp[4:1], 1'b0, cnt_temp[0]};
+                AGU1   = AGU0 + 2;
                 waddr_b0_temp = raddr_b0_reg;
                 waddr_b1_temp = raddr_b1_reg;
-                raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd1 : 5'd0);
-                raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd1);                
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1];               
             end
-stage3_state : begin
-    input_done_temp = 1'b1;
-    output_start_temp = 0;
-    swap0_en_temp = bank_select_temp32;
-    swap1_en_temp = bank_select_temp32;
-    we_b0_temp = 1'b1;
-    we_b1_temp = 1'b1;
-    re_b0_temp = 1'b1;
-    re_b1_temp = 1'b1;
-    ref_addr   = {cnt_temp[4:2], 1'b0, cnt_temp[1]};
-    waddr_b0_temp = raddr_b0_reg;
-    waddr_b1_temp = raddr_b1_reg;
-    raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd2 : 5'd0);
-    raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd2);
-end
-stage4_state : begin
-    input_done_temp = 1'b1;
-    output_start_temp = 0;
-    swap0_en_temp = bank_select_temp32;
-    swap1_en_temp = bank_select_temp32;
-    we_b0_temp = 1'b1;
-    we_b1_temp = 1'b1;
-    re_b0_temp = 1'b1;
-    re_b1_temp = 1'b1;
-    ref_addr   = {cnt_temp[4:3],1'b0,cnt_temp[2:1]};
-    waddr_b0_temp = raddr_b0_reg;
-    waddr_b1_temp = raddr_b1_reg;
-    raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd4 : 5'd0);
-    raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd4);                
-end
-stage5_state : begin
-    input_done_temp = 1'b1;
-    output_start_temp = 1'b0;
-    swap0_en_temp = bank_select_temp32;
-    swap1_en_temp = bank_select_temp32;
-    we_b0_temp = 1'b1;
-    we_b1_temp = 1'b1;
-    re_b0_temp = 1'b1;
-    re_b1_temp = 1'b1;
-    ref_addr   = {cnt_temp[4],1'b0,cnt_temp[3:1]};
-    waddr_b0_temp = raddr_b0_reg;
-    waddr_b1_temp = raddr_b1_reg;
-    raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd8 : 5'd0);
-    raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0 : 5'd8);
-end
+            stage3_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b1;
+                we_b1_temp = 1'b1;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                AGU0   = {cnt_temp[4:2], 1'b0, cnt_temp[1:0]};
+                AGU1   = AGU0 + 4;
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1]; 
+            end
+            stage4_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b1;
+                we_b1_temp = 1'b1;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                AGU0   = {cnt_temp[4:3], 1'b0, cnt_temp[2:0]};
+                AGU1   = AGU0 + 8;
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1];              
+            end
+            stage5_state : begin
+                input_done_temp = 1'b1;
+                output_start_temp = 1'b0;
+                swap0_en_temp = bank_select_temp32;
+                swap1_en_temp = bank_select_temp32;
+                we_b0_temp = 1'b1;
+                we_b1_temp = 1'b1;
+                re_b0_temp = 1'b1;
+                re_b1_temp = 1'b1;
+                AGU0   = {cnt_temp[4], 1'b0, cnt_temp[3:0]};
+                AGU1   = AGU0 + 16;
+                waddr_b0_temp = raddr_b0_reg;
+                waddr_b1_temp = raddr_b1_reg;
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1];
+            end
             default : begin //stage6_stage             
                 input_done_temp = 1'b1;
                 output_start_temp = 1'b1;
                 swap0_en_temp = bank_select_temp32;
-                swap1_en_temp = bank_select_temp32;
+                swap1_en_temp = 1'b0;
                 we_b0_temp = 1'b0;
                 we_b1_temp = 1'b0;
                 re_b0_temp = 1'b1;
                 re_b1_temp = 1'b1;
-                ref_addr   = {1'b0,cnt_temp[4:1]};
+                AGU0   = {cnt_temp[5:0]};
+                AGU1   = AGU0 + 32;
                 waddr_b0_temp = raddr_b0_reg;
                 waddr_b1_temp = raddr_b1_reg;
-                raddr_b0_temp = ref_addr + (bank_select_temp32? 5'd16 : 5'd0);
-                raddr_b1_temp = ref_addr + (bank_select_temp32? 5'd0  : 5'd16);
+                raddr_b0_temp = bank_select_AGU? AGU1[5:1] : AGU0[5:1];
+                raddr_b1_temp = bank_select_AGU? AGU0[5:1] : AGU1[5:1];
             end
         endcase
     end
@@ -200,7 +210,7 @@ end
     assign bank_select_temp = (cnt_temp[5]^cnt_temp[4])^((cnt_temp[3]^cnt_temp[2])^(cnt_temp[1]^cnt_temp[0]));
     assign bank_select_temp32 = (cnt_temp[4])^((cnt_temp[3]^cnt_temp[2])^(cnt_temp[1]^cnt_temp[0]));
     assign bank_select_stage6 = (cnt_stage6[4])^((cnt_stage6[3]^cnt_stage6[2])^(cnt_stage6[1]^cnt_stage6[0]));
-
+    assign bank_select_AGU = (AGU0[5]^AGU0[4])^(AGU0[3]^AGU0[2])^(AGU0[1]^AGU0[0]);
 //assign port
 assign input_done = input_done_temp;
 assign output_start = output_start_reg;
